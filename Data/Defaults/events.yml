@@ -1,0 +1,101 @@
+# World events: Horde, Champion Hunt, Ambush and the rare Boss appear around players as blue circles on the map; you
+# only find out which it is when you walk in. Each player who takes part gets their own
+# reward chest: 2 gear rolls from the event's biome (star level = the highest-star enemy defeated) and gold.
+
+enabled: true
+checkMinutes: 10          # how often the server tops up events
+spawnMin: 150             # events appear 150-600 m from a player
+spawnMax: 600
+perPlayer: 2              # events near each player (within nearRange)
+nearRange: 800
+capPerPlayer: 4           # server cap: 4 per online player...
+capMax: 16                # ...and 16 in total
+spacing: 250              # events stay this far apart
+baseDistance: 50          # never within this of player buildings
+activateRange: 60         # the event starts when a player comes this close
+lifetimeMinutes: 60       # unfinished events fade (and their map circle goes) after this
+cooldownMinutes: 45       # the same spot can't host another event for this long
+cooldownRadius: 150
+circleRadius: 80          # the map circle, centered near (not on) the event
+circleOffset: 40
+leaveRange: 120           # an active event fails when nobody is within this...
+leaveSeconds: 90          # ...for this long
+chest: TreasureChest_meadows
+gearRolls: 2
+gold: 10                  # x the biome's sell multiplier (vendors.yml biomeSellMultiplier)
+
+types:                    # weight: how often each appears (2 + 2 + 2 + 2 + 1 + 1: the Boss is 1 in 10)
+  Horde:
+    weight: 2
+    name: Horde
+    start: "A horde gathers! Survive the waves."
+    waves: [4, 5, 6]
+    perExtraPlayer: 1     # +1 creature per wave for each extra player taking part
+  Champion:
+    weight: 2
+    name: Champion Hunt
+    start: "A champion stalks these lands. Slay it!"
+    escorts: 3
+    perExtraPlayer: 1
+  Ambush:
+    weight: 2
+    name: Ambush
+    start: "Ambush!"
+    waves: [6]
+    perExtraPlayer: 1
+    triggerRange: 25      # springs when you step this close to its center
+  Shrine:                 # a glowing runestone: touch it for a short buff. No chest; one player uses it, then it fades.
+    weight: 2
+    name: Shrine
+    start: "A shrine hums with power. Touch it."
+    minutes: 5
+    buffs:
+      - { name: Shrine of Fury, stat: damage, value: 20, color: "#FF4A3A", fx: fx_fireskeleton_nova, icon: SwordIron, text: "+20% damage" }
+      - { name: Shrine of Swiftness, stat: moveSpeed, value: 20, color: "#4AA8FF", fx: vfx_dragon_ice_hit, icon: TrophyDeer, text: "+20% movement speed" }
+      - { name: Shrine of Fortune, stat: uniqueFind, value: 5, color: "#FFD23A", fx: vfx_Potion_stamina_medium, icon: Coins, text: "+5% Unique Find" }
+  Defend:                 # protect the Shrine of Protection (a breakable ward) from three waves
+    weight: 1
+    name: Defend
+    start: "Defend the shrine!"
+    waves: [4, 5, 6]
+    perExtraPlayer: 1
+    shrineHealth:         # the Shrine of Protection's health in each biome
+      Meadows: 300
+      BlackForest: 600
+      Swamp: 1000
+      Mountain: 1500
+      Plains: 2200
+      Mistlands: 3000
+      AshLands: 4500
+      DeepNorth: 5500
+    waveDistance: 30
+  Boss:
+    weight: 1
+    name: Ancient Foe
+    start: "An ancient foe has risen!"
+    tiersLower: 2         # the boss of the event's biome, or of a biome up to 2 below
+    healthPercent: 50     # half the real boss's health...
+    damagePercent: 75     # ...and 25% less damage. Boss affixes and boss loot rules still apply.
+    gearRolls: 3          # its reward chest: 3 boss-quality gear rolls...
+    uniquePercent: 20     # ...each with a 20% base chance of a Unique
+    bossLoot: true
+
+# The creatures each biome's events use. Champions become unique enemies (gold, boss affix, better loot).
+biomes:
+  Meadows:     { creatures: [Greyling, Neck, Boar], champions: [Greydwarf, Boar] }
+  BlackForest: { creatures: [Greydwarf, Greydwarf_Elite, Greydwarf_Shaman, Skeleton], champions: [Greydwarf_Elite, Troll] }
+  Swamp:       { creatures: [Draugr, Draugr_Elite, Skeleton_Poison, Blob], champions: [Draugr_Elite, Abomination] }
+  Mountain:    { creatures: [Wolf, Fenring, Ulv, Hatchling], champions: [Fenring, StoneGolem] }
+  Plains:      { creatures: [Goblin, GoblinArcher, GoblinShaman, Deathsquito], champions: [GoblinBrute, Lox] }
+  Mistlands:   { creatures: [Seeker, SeekerBrute, Tick], champions: [SeekerBrute, Gjall] }
+  AshLands:    { creatures: [Charred_Melee, Charred_Archer, Charred_Mage, BlobLava], champions: [Morgen] }
+
+# The Boss event's boss for each biome. Its kill doesn't count as defeating the real boss.
+bosses:
+  Meadows: Eikthyr
+  BlackForest: gd_king
+  Swamp: Bonemass
+  Mountain: Dragon
+  Plains: GoblinKing
+  Mistlands: SeekerQueen
+  AshLands: Fader

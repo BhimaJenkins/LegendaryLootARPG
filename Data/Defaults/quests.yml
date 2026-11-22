@@ -1,0 +1,82 @@
+# Legendary Loot and ARPG - vendor quests (the QUESTS tab).
+# Haldor gives BOUNTIES (hunts and camps), Hildir gives DELVES, the Bog Witch gives QUESTS (trophy turn-ins).
+# Biome names: Meadows, BlackForest, Swamp, Mountain, Plains, Mistlands, AshLands, DeepNorth, Ocean.
+# A quest is offered once its biome is at or below the biome of the last boss you defeated.
+# Creature, trophy and location names are prefab names. If a location name isn't found in your world, camps fall
+# back to a spot in the biome; delves are skipped.
+
+offersPerVendor: 3        # quests on offer at each vendor, new every in-game day
+maxActivePerVendor: 3     # quests you can have going at once with each vendor
+approachDistance: 70      # metres from the target before the bounty's creatures appear
+pinOffset: 40             # the map pin is up to this far off the real spot ("somewhere around here")
+areaRadius: 60            # a bounty's circle on the map. Step inside and its creatures come for you.
+searchMin: 400            # how far from you a new bounty or delve is placed (metres)
+searchMax: 1500
+refillDelves: true        # a delve into a dungeon you've cleared brings its dead creatures back (not ones still alive)
+
+# Rewards: coins x the buy multiplier of the quest's biome, plus one guaranteed piece of gear.
+bountyCoins: 60           # Haldor: a weapon (x the difficulty's coins; tier bumps by difficulty)
+delveCoins: 60            # Hildir: armor, cape or shield
+trophyCoins: 40           # Bog Witch: staff or trinket
+
+# Bounty difficulty: every bounty Haldor offers comes in each of these versions. Stars are rolled in the range
+# (a camp's leader always gets the top of it). coins multiplies the coin reward; tierBump raises the reward's tier;
+# bossBump adds the boss tier bump chance (loot.yml bossTierBumpChance).
+difficulties:
+  - { name: Normal, color: "#7CFC7C", minStars: 0, maxStars: 1, coins: 1, tierBump: 0, bossBump: false }
+  - { name: Hard, color: "#FFA040", minStars: 1, maxStars: 3, coins: 1.5, tierBump: 0, bossBump: true }
+  - { name: Very Hard, color: "#FF5050", minStars: 3, maxStars: 5, coins: 2.5, tierBump: 1, bossBump: true }
+
+# Haldor: kill one creature, circled on your map. Its stars come from the difficulty you pick.
+hunts:
+  - { title: "Hunt the Boar", creature: Boar, biome: Meadows, description: "A huge boar is tearing up the meadows." }
+  - { title: "Hunt the Neck", creature: Neck, biome: Meadows, description: "A fat neck has been raiding the shore." }
+  - { title: "Hunt the Greydwarf Brute", creature: Greydwarf_Elite, biome: BlackForest, description: "A brute stalks the forest paths." }
+  - { title: "Hunt the Troll", creature: Troll, biome: BlackForest, description: "A troll has been smashing the woods." }
+  - { title: "Hunt the Wraith", creature: Wraith, biome: Swamp, description: "A wraith drifts through the swamp at night." }
+  - { title: "Hunt the Abomination", creature: Abomination, biome: Swamp, description: "Something huge rose from the mire." }
+  - { title: "Hunt the Fenring", creature: Fenring, biome: Mountain, description: "A fenring howls on the peaks." }
+  - { title: "Hunt the Stone Golem", creature: StoneGolem, biome: Mountain, description: "A golem guards the high silver." }
+  - { title: "Hunt the Lox", creature: Lox, biome: Plains, description: "An angry bull lox roams the plains." }
+  - { title: "Hunt the Fuling Berserker", creature: GoblinBrute, biome: Plains, description: "A berserker leads the raids." }
+  - { title: "Hunt the Serpent", creature: Serpent, biome: Ocean, water: true, description: "A serpent haunts these waters." }
+  - { title: "Hunt the Seeker Soldier", creature: SeekerBrute, biome: Mistlands, description: "A soldier guards a hive in the mist." }
+  - { title: "Hunt the Gjall", creature: Gjall, biome: Mistlands, description: "A gjall floats over the mist." }
+  - { title: "Hunt the Fallen Valkyrie", creature: FallenValkyrie, biome: AshLands, description: "A fallen valkyrie circles the ash." }
+  - { title: "Hunt the Morgen", creature: Morgen, biome: AshLands, description: "A morgen lurks by the lava." }
+
+# Haldor: clear a camp. Defeat every creature at the marked spot. count = how many; the leader gets the most stars.
+camps:
+  - { title: "Clear the Greydwarf Camp", biome: BlackForest, locations: [GreydwarfCamp1], creatures: [Greydwarf, Greydwarf_Shaman, Greydwarf_Elite], count: 6, description: "Greydwarfs have made camp near the road." }
+  - { title: "Clear the Draugr Camp", biome: Swamp, locations: [SwampRuin1, SwampRuin2, SwampHut1, SwampHut2, SwampHut3, SwampHut4, SwampHut5], creatures: [Draugr, Draugr_Ranged, Draugr_Elite], count: 6, description: "Draugr gather at a ruin in the swamp." }
+  - { title: "Break the Drake Nest", biome: Mountain, locations: [DrakeNest01], creatures: [Hatchling], count: 5, description: "Drakes are nesting on the mountain." }
+  - { title: "Clear the Fuling Camp", biome: Plains, locations: [GoblinCamp2], creatures: [Goblin, GoblinArcher, GoblinShaman], count: 7, description: "Fulings have fortified a camp." }
+  - { title: "Clear the Seeker Swarm", biome: Mistlands, locations: [], creatures: [Seeker, SeekerBrute], count: 6, description: "Seekers are swarming in the mist." }
+
+# Hildir: find a marked chest inside a dungeon. found = the message when you open it.
+# Hildir: delves. The quest chest (chest: prefab) is placed in the dungeon room deepest from where you come in.
+delves:
+  - { title: "Find the lost amulet", biome: BlackForest, locations: [Crypt2, Crypt3, Crypt4], chest: TreasureChest_forestcrypt, found: "You found the lost amulet!", description: "My amulet was taken into a burial chamber." }
+  - { title: "Search the troll cave", biome: BlackForest, locations: [TrollCave02], chest: TreasureChest_trollcave, found: "You found the stolen satchel!", description: "A troll dragged my satchel into its cave." }
+  - { title: "Find the lost pearl", biome: Swamp, locations: [SunkenCrypt4], chest: TreasureChest_sunkencrypt, found: "You found the lost pearl!", description: "A pearl of mine sank with a crypt in the swamp." }
+  - { title: "Find the frozen relic", biome: Mountain, locations: [MountainCave02], chest: TreasureChest_mountaincave, found: "You found the frozen relic!", description: "A relic is frozen deep in a mountain cave." }
+  - { title: "Recover the dvergr cache", biome: Mistlands, locations: [Mistlands_DvergrTownEntrance1, Mistlands_DvergrTownEntrance2], chest: TreasureChest_dvergrtown, found: "You found the dvergr cache!", description: "The dvergr hid supplies in their mines." }
+
+# Bog Witch: bring trophies. count = how many.
+trophies:
+  - { title: "Bring me a boar's head", trophy: TrophyBoar, count: 1, biome: Meadows }
+  - { title: "Bring me neck tails", trophy: TrophyNeck, count: 2, biome: Meadows }
+  - { title: "Bring me a greydwarf eye", trophy: TrophyGreydwarf, count: 1, biome: BlackForest }
+  - { title: "Bring me a skull", trophy: TrophySkeleton, count: 1, biome: BlackForest }
+  - { title: "Bring me a troll's head", trophy: TrophyFrostTroll, count: 1, biome: BlackForest }
+  - { title: "Bring me a draugr's head", trophy: TrophyDraugr, count: 1, biome: Swamp }
+  - { title: "Bring me a leech", trophy: TrophyLeech, count: 1, biome: Swamp }
+  - { title: "Bring me a wraith's head", trophy: TrophyWraith, count: 1, biome: Swamp }
+  - { title: "Bring me wolf heads", trophy: TrophyWolf, count: 2, biome: Mountain }
+  - { title: "Bring me a fenring's head", trophy: TrophyFenring, count: 1, biome: Mountain }
+  - { title: "Bring me a fuling's head", trophy: TrophyGoblin, count: 1, biome: Plains }
+  - { title: "Bring me a deathsquito", trophy: TrophyDeathsquito, count: 1, biome: Plains }
+  - { title: "Bring me a seeker's head", trophy: TrophySeeker, count: 1, biome: Mistlands }
+  - { title: "Bring me a tick", trophy: TrophyTick, count: 1, biome: Mistlands }
+  - { title: "Bring me a morgen's head", trophy: TrophyMorgen, count: 1, biome: AshLands }
+  - { title: "Bring me a charred skull", trophy: TrophyCharredMelee, count: 1, biome: AshLands }

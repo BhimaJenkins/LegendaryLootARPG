@@ -1,0 +1,145 @@
+# Legendary Loot and ARPG - vendors, gold and selling.
+# Biome lists follow loot.yml's biomeOrder: Meadows, BlackForest, Swamp, Mountain, Plains, Mistlands, AshLands, DeepNorth
+
+# --- Coins ---
+# Coins weigh nothing and stack this high. Slots show short amounts (12.5k, 1.25M); the tooltip shows the exact number.
+coinStackSize: 999999
+coinsWeightless: true
+
+# --- Selling gear ---
+# Sell price = tier price x the item's biome sell multiplier (x craftedSellShare if the item was crafted).
+tierSellPrice:
+  Uncommon: 5
+  Magic: 12
+  Rare: 30
+  Epic: 50
+  Legendary: 100
+  Unique: 400
+biomeSellMultiplier: [1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 3]
+craftedSellShare: 0.25
+# Tiers that need a second press of the Sell button before they're sold.
+confirmTiers: [Legendary, Unique]
+
+# --- Buying (used by the vendor shops) ---
+# Buy multiplier by the biome of the last boss you defeated.
+biomeBuyMultiplier: [1, 1.5, 2.5, 4, 6, 8, 11, 15]
+
+# --- Vendor shops ---
+# Which trader sells what (matched against the trader's prefab name). Item types are weapon skills
+# (Swords, Axes, Clubs, Knives, Spears, Polearms, Unarmed, Bows, Crossbows, ElementalMagic, BloodMagic, or a
+# modded skill's name) or gear slots (Helmet, Chest, Legs, Cape, Shield, Trinket, Utility).
+shops:
+  Haldor:
+    label: weapon
+    sells: [Swords, Axes, Clubs, Knives, Spears, Polearms, Unarmed, Bows, Crossbows]
+  Hildir:
+    label: armor
+    sells: [Helmet, Chest, Legs, Cape, Shield]
+  BogWitch:
+    label: staff or trinket
+    sells: [ElementalMagic, BloodMagic, Trinket, Utility]
+# What each type is called in the shop.
+typeNames:
+  Swords: Sword
+  Axes: Axe
+  Clubs: Mace
+  Knives: Knife
+  Spears: Spear
+  Polearms: Atgeir
+  Unarmed: Fist weapon
+  Bows: Bow
+  Crossbows: Crossbow
+  ElementalMagic: Elemental staff
+  BloodMagic: Blood staff
+  Helmet: Helmet
+  Chest: Chest armor
+  Legs: Leg armor
+  Cape: Cape
+  Shield: Shield
+  Trinket: Trinket
+  Utility: Belt or charm
+
+# Shop gear comes from the biome of the last boss you defeated (Meadows before any), or lower if a type has
+# nothing there yet. Types only found in later biomes aren't offered until you get there.
+bossKeys:
+  defeated_eikthyr: Meadows
+  defeated_gdking: BlackForest
+  defeated_bonemass: Swamp
+  defeated_dragon: Mountain
+  defeated_goblinking: Plains
+  defeated_queen: Mistlands
+  defeated_fader: AshLands
+
+# Prices (all x the buy multiplier). Tier prices use tierSellPrice above.
+chosenTierPrice: 4          # random item of a tier, of today's item type: 4 x tier price
+mysteryPrice: 40            # mystery item (once a day): any type, tier odds from the boss biome (loot.yml tierOdds)
+mysteryUniqueChance: 1      # percent
+mysteryNextBiomeChance: 2   # percent chance the mystery item comes from the next biome up
+specialsPerVendor: 2        # pre-rolled items you can inspect, new every in-game day
+specialPrice: 10            # 10 x tier price
+specialTierBump: 1          # specials roll one tier above the boss biome's odds
+uniqueGamblePrice: 2500     # a guaranteed Unique of today's item type
+uniqueGambleFrom: AshLands  # boss biome needed before the Unique gamble appears
+
+# Reroll: swaps the item type of the tier offers. Not multiplied by the buy multiplier.
+# Each reroll costs more than the last: 50, 60, 80, 110, 150... (the step grows by rerollCostStep each time).
+# The count resets every in-game day, per vendor.
+rerollCost: 50
+rerollCostStep: 10
+
+# --- Vendor stalls ---
+# Buildable stalls (hammer; build menu tabs set per stall with "tags": Misc, Crafting, Building, Furniture, Lighting,
+# Decor, Storage...) with their own vendor. Each sells only items whose recipe you've discovered,
+# and buys mod gear through Sell gear. Prices: factor x the buy multiplier of the item's own biome.
+# Sells: meads, dishes (cooked food, no feasts), arrows, bolts, bombs, ballista. stack: how many per purchase.
+# The building comes from the mod's blueprint; the vendor's spot and the hat are tuned here (metres, degrees).
+# hatPosition/hatRotation are relative to the vendor's body: +Y up, +Z the way it faces, measured from its head (or
+# helmet slot). hatScale 1 = the hat's normal size (it grows with npcScale). hatLight scales a glowing hat's light.
+# Changing the building, vendor or hat needs a game restart; prices and lists update live.
+stalls:
+  BoogiesBar:
+    name: "Boogie's Bar"
+    description: "A little bar. Boogie sells meads and dishes you know how to make."
+    blueprint: bartender
+    tags: [Misc, Decor]
+    icon: Tankard              # item whose icon is used until textures/boogiesbar.png exists
+    iconFile: boogiesbar.png
+    requirements: { Wood: 20, LeatherScraps: 10, DeerHide: 5, Resin: 10 }
+    npc: Greyling
+    npcPosition: [-0.25, 0, -0.2]
+    npcRotation: 180
+    hat: HelmetFishingHat
+    hatPosition: [0, 0.12, 0]
+    hatRotation: [0, 180, 0]
+    hatScale: 1
+    voice: boogie
+    greeting: "Welcome to Boogie's Bar! If you know how to brew it or cook it, I'll pour it or plate it."
+    talk: ["Thirsty?", "Fresh mead, cold as the mountains!", "Sit, sit! Boogie serves the best."]
+    sells:
+      meads: { price: 10, stack: 1 }
+      dishes: { price: 5, stack: 1 }
+  GrillosGeneralStore:
+    name: "Grillo's General Store"
+    description: "A trading post. Grillo sells arrows, bolts, bombs and ballista ammo you know how to make."
+    blueprint: generalstore
+    tags: [Misc, Decor]
+    icon: ArrowWood            # item whose icon is used until textures/grillos.png exists
+    iconFile: grillos.png
+    requirements: { RoundLog: 20, FineWood: 10, IronNails: 10, Entrails: 20 }
+    npc: Goblin
+    npcPosition: [-0.63, 0, 0.27]
+    npcRotation: 180
+    npcScale: 1.3
+    hat: HelmetDverger
+    hatPosition: [0, 0.2, 0]
+    hatRotation: [0, 0, 0]
+    hatScale: 1
+    hatLight: 0.5
+    voice: grillo
+    greeting: "Grillo's General Store! Arrows, bolts, bombs. Whatever you can craft, Grillo can sell."
+    talk: ["Need ammo?", "Sharp arrows, cheap!", "Grillo has the best bombs."]
+    sells:
+      arrows: { price: 10, stack: 20 }
+      bolts: { price: 10, stack: 20 }
+      bombs: { price: 15, stack: 1 }
+      ballista: { price: 20, stack: 1 }

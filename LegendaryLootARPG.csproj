@@ -1,0 +1,68 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<!--
+		Legendary Loot and ARPG
+		Same setup as Keen Combat: BepInEx 5, Harmony, .NET 4.8, publicized Valheim assemblies.
+		YamlDotNet and ServerSync are merged into the final DLL by ILRepack, so players only install one file
+		and other mods that ship their own copies can't clash with ours.
+
+		Set ValheimDir below if your Steam library is somewhere else.
+	-->
+
+	<PropertyGroup>
+		<TargetFramework>net48</TargetFramework>
+		<AssemblyName>LegendaryLootARPG</AssemblyName>
+		<RootNamespace>LegendaryLoot</RootNamespace>
+		<LangVersion>latest</LangVersion>
+		<Nullable>disable</Nullable>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<ValheimDir Condition="'$(ValheimDir)' == ''">C:\Program Files (x86)\Steam\steamapps\common\Valheim</ValheimDir>
+		<ManagedDir>$(ValheimDir)\valheim_Data\Managed</ManagedDir>
+		<OutputPath>$(ValheimDir)\BepInEx\plugins\BhimaJenkins-LegendaryLootARPG\</OutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.1" PrivateAssets="all" />
+		<PackageReference Include="YamlDotNet" Version="13.7.1" />
+		<PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.34.2" PrivateAssets="all" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="assembly_valheim"><HintPath>$(ManagedDir)\assembly_valheim.dll</HintPath><Private>False</Private><Publicize>true</Publicize></Reference>
+		<Reference Include="assembly_utils"><HintPath>$(ManagedDir)\assembly_utils.dll</HintPath><Private>False</Private><Publicize>true</Publicize></Reference>
+		<Reference Include="assembly_guiutils"><HintPath>$(ManagedDir)\assembly_guiutils.dll</HintPath><Private>False</Private><Publicize>true</Publicize></Reference>
+		<Reference Include="Splatform"><HintPath>$(ManagedDir)\Splatform.dll</HintPath><Private>False</Private></Reference>
+		<Reference Include="Unity.TextMeshPro"><HintPath>$(ManagedDir)\Unity.TextMeshPro.dll</HintPath><Private>False</Private></Reference>
+		<Reference Include="UnityEngine"><HintPath>$(ManagedDir)\UnityEngine.dll</HintPath><Private>False</Private></Reference>
+		<Reference Include="UnityEngine.CoreModule"><HintPath>$(ManagedDir)\UnityEngine.CoreModule.dll</HintPath><Private>False</Private></Reference>
+		<Reference Include="UnityEngine.PhysicsModule"><HintPath>$(ManagedDir)\UnityEngine.PhysicsModule.dll</HintPath><Private>False</Private></Reference>
+		<Reference Include="UnityEngine.AudioModule"><HintPath>$(ManagedDir)\UnityEngine.AudioModule.dll</HintPath><Private>False</Private></Reference>
+		<Reference Include="UnityEngine.UIModule"><HintPath>$(ManagedDir)\UnityEngine.UIModule.dll</HintPath><Private>False</Private></Reference>
+		<Reference Include="UnityEngine.TextCoreFontEngineModule"><HintPath>$(ManagedDir)\UnityEngine.TextCoreFontEngineModule.dll</HintPath><Private>False</Private></Reference>
+		<Reference Include="UnityEngine.ParticleSystemModule"><HintPath>$(ManagedDir)\UnityEngine.ParticleSystemModule.dll</HintPath><Private>False</Private></Reference>
+		<Reference Include="UnityEngine.AnimationModule"><HintPath>$(ManagedDir)\UnityEngine.AnimationModule.dll</HintPath><Private>False</Private></Reference>
+		<Reference Include="UnityEngine.UI"><HintPath>$(ManagedDir)\UnityEngine.UI.dll</HintPath><Private>False</Private></Reference>
+		<Reference Include="UnityEngine.UnityWebRequestModule"><HintPath>$(ManagedDir)\UnityEngine.UnityWebRequestModule.dll</HintPath><Private>False</Private></Reference>
+		<Reference Include="UnityEngine.UnityWebRequestAudioModule"><HintPath>$(ManagedDir)\UnityEngine.UnityWebRequestAudioModule.dll</HintPath><Private>False</Private></Reference>
+		<Reference Include="BepInEx"><HintPath>$(ValheimDir)\BepInEx\core\BepInEx.dll</HintPath><Private>False</Private></Reference>
+		<Reference Include="0Harmony"><HintPath>$(ValheimDir)\BepInEx\core\0Harmony.dll</HintPath><Private>False</Private></Reference>
+		<!-- ServerSync ships as a DLL (from github.com/blaxxun-boop/ServerSync). Keep it in Libs\. -->
+		<Reference Include="ServerSync"><HintPath>Libs\ServerSync.dll</HintPath></Reference>
+	</ItemGroup>
+
+	<!-- Fonts and sounds that ship next to the DLL. Put magicdrop.ogg (and later the vendor voice lines) in audio\. -->
+	<ItemGroup>
+		<None Include="fonts\**" CopyToOutputDirectory="PreserveNewest" LinkBase="fonts" />
+		<None Include="audio\**\*.ogg" CopyToOutputDirectory="PreserveNewest" LinkBase="audio" />
+		<None Include="textures\**\*.png" CopyToOutputDirectory="PreserveNewest" LinkBase="textures" />
+	</ItemGroup>
+
+	<!-- Default data files, written to BepInEx\config\LegendaryLootARPG\ on first run. -->
+	<ItemGroup>
+		<EmbeddedResource Include="Data\Defaults\*.yml" LogicalName="LegendaryLoot.Defaults.%(Filename)%(Extension)" />
+		<EmbeddedResource Include="Data\Blueprints\*.blueprint" LogicalName="LegendaryLoot.Blueprints.%(Filename)%(Extension)" />
+	</ItemGroup>
+
+</Project>

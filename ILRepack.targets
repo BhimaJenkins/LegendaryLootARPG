@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Merges YamlDotNet and ServerSync into LegendaryLootARPG.dll after each build (internalized, so no clashes with other mods). -->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<Target Name="ILRepacker" AfterTargets="Build">
+		<ItemGroup>
+			<InputAssemblies Include="$(TargetPath)" />
+			<InputAssemblies Include="$(OutputPath)YamlDotNet.dll" />
+			<InputAssemblies Include="$(OutputPath)ServerSync.dll" />
+		</ItemGroup>
+		<ILRepack Parallel="true" DebugInfo="true" Internalize="true" InputAssemblies="@(InputAssemblies)"
+		          OutputFile="$(TargetPath)" TargetKind="SameAsPrimaryAssembly" LibraryPath="$(OutputPath);$(ManagedDir);$(ValheimDir)\BepInEx\core" />
+		<Delete Files="$(OutputPath)YamlDotNet.dll;$(OutputPath)ServerSync.dll;$(OutputPath)YamlDotNet.xml" />
+	</Target>
+</Project>

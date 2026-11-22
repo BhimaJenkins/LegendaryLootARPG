@@ -1,0 +1,407 @@
+# Generated from the Sheet by Tools/export_sheet.py. Edit the Sheet, then export again.
+# A Unique only drops once its power is coded (or with 'Unfinished Uniques (testing)' on).
+
+- id: "Eaglehorn"
+  name: "Eaglehorn"
+  description: "Attack 20% faster. 20% chance to fire a spread of 5 arrows."
+  allowedOn: ["Bow"]
+  minBiome: "Plains"
+  weight: 1
+
+- id: "IcyProtection"
+  name: "Icy Protection"
+  description: "Every 1 to 2 minutes in a fight: take 50% less damage for 8 seconds, and 3 drakes fight for you for 30 seconds."
+  allowedOn: ["Shield", "Trinket"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "RootedRevenge"
+  name: "Rooted Revenge"
+  description: "Every 1 to 2 minutes in a fight, roots enemies within 10 m for 10 seconds (not bosses). You deal 20% more damage to rooted enemies."
+  allowedOn: ["Bow", "Crossbow"]
+  allowedSkills: ["Knives"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "ChainLightning"
+  name: "Chain Lightning"
+  description: "Every hit arcs lightning to up to 3 nearby enemies, each taking 65% of the hit as lightning damage."
+  allowedOn: ["Bow"]
+  allowedSkills: ["Knives", "Polearms", "Spears", "Unarmed"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "Berserker"
+  name: "Berserker"
+  description: "10% chance on hit to go berserk for 10 seconds: no health regen, but +50% to +200% damage, growing with missing health."
+  allowedOn: []
+  minBiome: "Meadows"
+  weight: 0.7
+
+- id: "Impenetrable"
+  name: "Impenetrable"
+  description: "20% chance when hit to become immune to all damage for 6 seconds. Once every 100 seconds."
+  allowedOn: ["Chest", "Shield"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "HelsHarvest"
+  name: "Hel's Harvest"
+  description: "Your kills rise as thralls that fight for you for 30 seconds (or until they fall), up to 2 at once. Two can be raised, then once again 3 minutes later."
+  allowedOn: ["Staff"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "KineticQuake"
+  name: "Kinetic Quake"
+  description: "Every 10th block releases a shockwave in front of you: 30% of your block power as blunt damage, staggering enemies."
+  allowedOn: ["Shield"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "LifeSiphon"
+  name: "Life Siphon"
+  description: "Hits drain a foe for 3 seconds: it can't heal, and everyone who hits it heals for 5% of the damage they deal."
+  allowedOn: []
+  allowedSkills: ["Knives", "Spears", "Unarmed"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "Undying"
+  name: "Undying"
+  description: "On death, regain full health instead."
+  allowedOn: ["Helmet", "Shield", "OneHanded+Clubs"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "GreedsCreed"
+  name: "Greed's Creed"
+  description: "Your damage grows with the coins you carry, up to +25% (about +16% at 1,000 coins)."
+  allowedOn: ["OneHanded", "Trinket"]
+  minBiome: "Mountain"
+  weight: 1
+
+- id: "Thunderstroke"
+  name: "Thunderstroke"
+  description: "Attack 20% faster. Every hit arcs lightning to up to 3 nearby enemies for 65% of the hit; thrown spears cast it twice. Spears thrown return to your hand."
+  allowedOn: []
+  allowedSkills: ["Polearms", "Spears"]
+  minBiome: "Plains"
+  weight: 1
+
+- id: "Windforce"
+  name: "Windforce"
+  description: "Draw and reload 20% faster. Arrows pierce through enemies. 20% chance to fire a spread of 6 piercing arrows."
+  allowedOn: ["Bow", "Crossbow"]
+  minBiome: "Mistlands"
+  weight: 1
+
+- id: "Skystrike"
+  name: "Skystrike"
+  description: "+10% damage and attack 20% faster. 20% chance on hit to call down a meteor, once every 5 seconds."
+  allowedOn: ["OneHanded", "TwoHanded", "TwoHandedLeft", "Bow", "Crossbow", "Staff"]
+  minBiome: "Swamp"
+  weight: 0.7
+
+- id: "RavensWing"
+  name: "Raven's Wing"
+  description: "25% chance on hit to summon 3 invulnerable ravens that fight beside you for 30 seconds, each strike dealing 12% of your weapon damage. Once every 60 seconds."
+  allowedOn: ["Bow", "Crossbow"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "BlobberLobber"
+  name: "Blobber Lobber"
+  description: "20% chance on hit to lob a blob that fights for you for 20 seconds (up to 2 at once)."
+  allowedOn: ["Bow", "Crossbow"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "JarlSlayer"
+  name: "Jarl-Slayer"
+  description: "Extra damage against tougher enemies: starred creatures and bosses."
+  allowedOn: ["TwoHanded+Axes"]
+  allowedSkills: ["Swords"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "Frostgrip"
+  name: "Frostgrip"
+  description: "Enemies within 5 m are slowed by 20%. Hits add 10% frost damage."
+  allowedOn: []
+  allowedSkills: ["Swords"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "DraugrOath"
+  name: "Draugr Oath"
+  description: "10% chance on hit to raise a Draugr beside your foe that fights for you for 30 seconds. Once every 60 seconds."
+  allowedOn: ["OneHanded+Swords", "OneHanded+Axes"]
+  minBiome: "Swamp"
+  weight: 1
+
+- id: "Bloodaxe"
+  name: "Bloodaxe"
+  description: "Hits make enemies bleed, stacking up."
+  allowedOn: []
+  allowedSkills: ["Axes"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "Logbreaker"
+  name: "Logbreaker"
+  description: "Crushing blows tear off a chunk of the target's current health."
+  allowedOn: ["TwoHanded+Axes", "TwoHanded+Clubs"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "Groundbreaker"
+  name: "Groundbreaker"
+  description: "The third hit of a combo shakes the ground and staggers enemies within 4 m. Once every 15 seconds."
+  allowedOn: []
+  allowedSkills: ["Clubs"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "Stormstomp"
+  name: "Stormstomp"
+  description: "10% chance on hit to release Eikthyr's lightning stomp: 50% of the hit as lightning to enemies within 5 m, and staggers them. Once every 6 seconds."
+  allowedOn: ["TwoHanded+Clubs"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "ThroatCutter"
+  name: "Throat-Cutter"
+  description: "30% of your damage is stored on the target, then after 3 seconds bursts out on everything within 3 m."
+  allowedOn: []
+  allowedSkills: ["Knives"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "FirstCut"
+  name: "First Cut"
+  description: "Your first hit on a full-health enemy is always a critical strike."
+  allowedOn: []
+  allowedSkills: ["Knives"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "WolfsFang"
+  name: "Wolf's Fang"
+  description: "Thrown spears pierce through up to 3 enemies, hitting up to 4 (20% less damage after each), and give back 15 stamina per enemy hit."
+  allowedOn: []
+  allowedSkills: ["Spears"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "ReapersArc"
+  name: "Reaper's Arc"
+  description: "The atgeir spin weakens everything it hits."
+  allowedOn: []
+  allowedSkills: ["Polearms"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "BearsRage"
+  name: "Bear's Rage"
+  description: "Each hit adds 4% attack and movement speed for 5 seconds, stacking up to 5 times."
+  allowedOn: []
+  allowedSkills: ["Unarmed"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "FenrirsHunger"
+  name: "Fenrir's Hunger"
+  description: "Hits heal you, more when you're badly hurt."
+  allowedOn: []
+  allowedSkills: ["Unarmed"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "HuntsmansSnare"
+  name: "Huntsman's Snare"
+  description: "Arrows deal extra damage to slowed, rooted or staggered enemies."
+  allowedOn: ["Bow"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "IronMoor"
+  name: "Iron Moor"
+  description: "Bolts can pin enemies in place."
+  allowedOn: ["Crossbow"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "FrozenFjord"
+  name: "Frozen Fjord"
+  description: "Bolts pierce through 2 enemies, hitting up to 3. Hits slow by 40% for 3 seconds."
+  allowedOn: ["Crossbow"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "BifrostEye"
+  name: "Bifrost Eye"
+  description: "50% chance when hit to blink 8 m away from your attacker. Once every 30 seconds."
+  allowedOn: ["Staff+ElementalMagic"]
+  minBiome: "Meadows"
+  weight: 1
+  enabled: false
+
+- id: "TwinEmbers"
+  name: "Twin Embers"
+  description: "Each cast fires 2 extra embers fanning out beside it, each dealing 30% damage."
+  allowedOn: ["Staff+ElementalMagic"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "GaldrFocus"
+  name: "Galdr Focus"
+  description: "20% chance per cast to cost no eitr."
+  allowedOn: ["Staff+ElementalMagic"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "OneEyedKing"
+  name: "One-Eyed King"
+  description: "Raises a single giant skeleton champion instead of a host: double health, +150% damage, 50% larger."
+  allowedOn: ["Staff+BloodMagic"]
+  items: ["StaffSkeleton"]        # the Dead Raiser only
+  values: { health: 100, damage: 150, size: 50 }   # percent more than one normal skeleton
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "StormWall"
+  name: "Storm Wall"
+  description: "20% chance on block to strike the attacker with lightning for 40% of your block power."
+  allowedOn: ["Shield"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "PackGuardian"
+  name: "Pack Guardian"
+  description: "Every 5th block calls 2 wolves to your side for 15 seconds. Once every 60 seconds."
+  allowedOn: ["Shield"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "Rotcrown"
+  name: "Rotcrown"
+  description: "15% chance when hit to release a poison cloud: 40 poison damage to enemies within 5 m. Once every 10 seconds."
+  allowedOn: ["Helmet"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "AllfathersHood"
+  name: "Allfather's Hood"
+  description: "+10% Health, +10% Stamina, +10 Eitr, +3 to all skills"
+  allowedOn: ["Helmet"]
+  minBiome: "Swamp"
+  weight: 1
+
+- id: "SurtlingMantle"
+  name: "Surtling Mantle"
+  description: "Immune to Burning; fire damage taken -25%"
+  allowedOn: ["Chest"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "YmirsHide"
+  name: "Ymir's Hide"
+  description: "Immune to Freezing and frost slow; frost damage taken -20%"
+  allowedOn: ["Chest", "Shoulder"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "SteadfastCuirass"
+  name: "Steadfast Cuirass"
+  description: "While stamina is above 90%: damage taken -20%"
+  allowedOn: ["Chest"]
+  minBiome: "Mountain"
+  weight: 1
+
+- id: "BogWalkers"
+  name: "Bog Walkers"
+  description: "Immune to Wet. Tarred slows you half as much. Swim 15% faster. Take 20% less poison damage."
+  allowedOn: ["Legs"]
+  minBiome: "Swamp"
+  weight: 1
+
+- id: "WanderersLeggings"
+  name: "Wanderer's Leggings"
+  description: "While moving: +12% damage. Standing still 1.5 s: damage taken -15%"
+  allowedOn: ["Legs"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "RavenMantle"
+  name: "Raven Mantle"
+  description: "3 feathers, each stopping one projectile. One regrows every 10 seconds."
+  allowedOn: ["Shoulder"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "Mistcloak"
+  name: "Mistcloak"
+  description: "When hit below 30% health, enemies lose sight of you for 4 seconds. Once every 90 seconds."
+  allowedOn: ["Shoulder"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "SeidrRing"
+  name: "Seidr Ring"
+  description: "Kills leave a 5 m circle of power for 6 seconds; while you stand in it, you deal 20% more damage. Once every 10 seconds."
+  allowedOn: ["Trinket"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "RuneofSeasons"
+  name: "Rune of Seasons"
+  description: "Cycles fire, frost, lightning and poison every 5 seconds; your damage of that element is 25% higher."
+  allowedOn: ["Trinket"]
+  minBiome: "Plains"
+  weight: 1
+
+- id: "Windfury"
+  name: "Windfury"
+  description: "20% chance on hit to strike twice more in a flash: 2 extra hits."
+  allowedOn: ["OneHanded", "TwoHanded", "TwoHandedLeft"]
+  allowedSkills: ["Unarmed"]
+  minBiome: "Mistlands"
+  weight: 0.7
+
+- id: "Thrasher"
+  name: "Thrasher"
+  description: "20% chance on hit to strike again in a flash: 1 extra hit."
+  allowedOn: ["OneHanded", "TwoHanded", "TwoHandedLeft"]
+  allowedSkills: ["Unarmed"]
+  minBiome: "Meadows"
+  weight: 0.7
+
+- id: "PathoftheRighteous"
+  name: "Path of the Righteous"
+  description: "20% chance on hit to raise a bubble shield that absorbs damage equal to 10% of your maximum health. Once every 15 seconds."
+  allowedOn: ["OneHanded", "TwoHanded", "TwoHandedLeft"]
+  allowedSkills: ["Unarmed"]
+  minBiome: "Meadows"
+  weight: 0.7
+
+- id: "TrollsStrength"
+  name: "Troll's Strength"
+  description: "Increase carry weight by 20%"
+  allowedOn: ["Legs"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "PrismaticDefender"
+  name: "Prismatic Defender"
+  description: "increase resistance to fire, frost, poison, lightning damage by 10%"
+  allowedOn: ["Legs", "Shoulder", "Chest", "Helmet"]
+  minBiome: "Meadows"
+  weight: 1
+
+- id: "AdrenalCatalyst"
+  name: "Adrenal Catalyst"
+  description: "10% chance on hit to gain 10 adrenaline."
+  allowedOn: ["Legs", "Helmet", "Shoulder"]
+  minBiome: "Meadows"
+  weight: 1

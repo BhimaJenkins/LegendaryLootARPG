@@ -1,0 +1,402 @@
+# Legendary Loot and ARPG - drop tables and rules.
+# Percent values are written as percents (15 = 15%). Chances written as 0.10 are fractions (0.10 = 10%).
+# Biome names: Meadows, BlackForest, Swamp, Mountain, Plains, Mistlands, AshLands, DeepNorth
+
+# The biome ladder, lowest to highest. A biome's position is its "biome step" (Meadows = 0).
+biomeOrder: [Meadows, BlackForest, Swamp, Mountain, Plains, Mistlands, AshLands, DeepNorth]
+# Biomes that aren't on the ladder use another biome's tables.
+biomeAliases:
+  Ocean: Plains
+
+# 1. Drop chance = (base + perBiomeStep x biome step + perStar x stars) x the config slider, capped at 100%.
+dropChanceBase: 0.10
+dropChancePerBiomeStep: 0.03
+dropChancePerStar: 0.03
+# Swarm creatures drop at half the chance.
+swarmDropMultiplier: 0.5
+swarmCreatures: [Tick, Bat, Deathsquito]
+
+# 2. Chance the item comes from the next biome up (it still uses the mob's tier odds).
+nextBiomeChance: 0.03
+
+# 4. Unique chance in percent: biome base + per star + Unique Find, capped (bosses are uncapped).
+uniqueBaseChance:
+  Meadows: 1
+  BlackForest: 1
+  Swamp: 2
+  Mountain: 2
+  Plains: 3
+  Mistlands: 4
+  AshLands: 5
+  DeepNorth: 5
+uniqueChancePerStar: 1
+uniqueChanceCap: 15
+uniqueChanceScale: 0.5    # every Unique chance (base, stars, Unique Find, caps, bosses, events) is multiplied by this,
+                          # then by the config's "Unique drop rate" slider (1-5x)
+
+# 5. Tier odds in percent: [Uncommon, Magic, Rare, Epic, Legendary]
+tierOdds:
+  Meadows:     [97, 3, 0, 0, 0]
+  BlackForest: [70, 27, 3, 0, 0]
+  Swamp:       [23, 40, 33, 4, 0]
+  Mountain:    [10, 30, 50, 10, 0]
+  Plains:      [0, 20, 40, 40, 0]
+  Mistlands:   [0, 0, 25, 65, 10]
+  AshLands:    [0, 0, 0, 67, 33]
+  DeepNorth:   [0, 0, 0, 50, 50]
+
+# 6. Star bump: chance per star to move the item up one tier, capped.
+starBumpPerStar: 0.10
+starBumpMax: 0.50
+
+# Bosses: drops per nearby player, Unique chance multiplier, and the chance to move up a tier.
+bossDropsPerPlayer: 2
+bossUniqueMultiplier: 3
+bossTierBumpChance: 0.55
+
+# Weapons whose skill is listed here count as staffs. Add modded magic schools here.
+magicSkills: [ElementalMagic, BloodMagic]
+# Items with these skills never drop or roll affixes (tools).
+excludedSkills: [Pickaxes, Fishing]
+# Item categories that never drop: OneHanded, TwoHanded, TwoHandedLeft, Bow, Crossbow, Staff, Torch,
+# Shield, Helmet, Chest, Legs, Shoulder, Utility, Trinket
+excludedCategories: [Torch]
+# Item prefab names that never drop.
+excludedItems:
+  # Deep North throwables and tools that look like gear to the game
+  - BombBlob_Morkhalla   # Blob Bomb: Pulp
+  - BombDynamite         # Ember Charge
+  - GrapplingHook
+  - Snowball
+  - Shovel               # Snow Shovel
+  - Lantern_DN           # Salvaged Lantern
+
+# A creature's home biome (prefab name). Unlisted creatures use the biome they died in.
+creatureBiomes:
+  # Meadows
+  Boar: Meadows
+  Deer: Meadows
+  Neck: Meadows
+  Greyling: Meadows
+  Eikthyr: Meadows
+  # Black Forest
+  Greydwarf: BlackForest
+  Greydwarf_Elite: BlackForest
+  Greydwarf_Shaman: BlackForest
+  Troll: BlackForest
+  Skeleton: BlackForest
+  Skeleton_Poison: BlackForest
+  Ghost: BlackForest
+  Bjorn: BlackForest
+  gd_king: BlackForest
+  # Swamp
+  Draugr: Swamp
+  Draugr_Elite: Swamp
+  Draugr_Ranged: Swamp
+  Blob: Swamp
+  BlobElite: Swamp
+  Leech: Swamp
+  Surtling: Swamp
+  Wraith: Swamp
+  Abomination: Swamp
+  Bonemass: Swamp
+  # Mountain
+  Wolf: Mountain
+  Fenring: Mountain
+  Fenring_Cultist: Mountain
+  Hatchling: Mountain
+  StoneGolem: Mountain
+  Ulv: Mountain
+  Bat: Mountain
+  Dragon: Mountain
+  # Plains
+  Goblin: Plains
+  GoblinArcher: Plains
+  GoblinBrute: Plains
+  GoblinShaman: Plains
+  Deathsquito: Plains
+  Lox: Plains
+  BlobTar: Plains
+  Unbjorn: Plains
+  GoblinKing: Plains
+  # Mistlands
+  Seeker: Mistlands
+  SeekerBrute: Mistlands
+  SeekerBrood: Mistlands
+  Gjall: Mistlands
+  Tick: Mistlands
+  Dverger: Mistlands
+  DvergerMage: Mistlands
+  DvergerMageFire: Mistlands
+  DvergerMageIce: Mistlands
+  DvergerMageSupport: Mistlands
+  Hare: Mistlands
+  SeekerQueen: Mistlands
+  # Ashlands
+  Charred_Melee: AshLands
+  Charred_Archer: AshLands
+  Charred_Mage: AshLands
+  Charred_Twitcher: AshLands
+  Morgen: AshLands
+  FallenValkyrie: AshLands
+  Volture: AshLands
+  Asksvin: AshLands
+  BlobLava: AshLands
+  BonemawSerpent: AshLands
+  Fader: AshLands
+  # Ocean
+  Serpent: Plains
+
+# Which biome a crafting material belongs to (prefab name). An item's biome is the highest biome among
+# its recipe materials. Materials not listed here are followed through their own recipe if they have one.
+# Deep North materials: add their prefab names here with DeepNorth.
+# An item is never below its crafting station's biome, whatever it's made of (the Arbalest is made of early
+# materials, but at the Black Forge, so it's a Mistlands item).
+stationBiomes:
+  piece_workbench: Meadows
+  forge: BlackForest
+  piece_stonecutter: BlackForest
+  piece_artisanstation: Plains
+  blackforge: Mistlands
+  piece_magetable: Mistlands
+
+materialBiomes:
+  # Meadows
+  Wood: Meadows
+  Stone: Meadows
+  Flint: Meadows
+  LeatherScraps: Meadows
+  DeerHide: Meadows
+  Resin: Meadows
+  Feathers: Meadows
+  HardAntler: Meadows
+  Raspberry: Meadows
+  Honey: Meadows
+  Dandelion: Meadows
+  Mushroom: Meadows
+  TrophyDeer: Meadows
+  TrophyBoar: Meadows
+  TrophyNeck: Meadows
+  Coins: Meadows
+  # Black Forest
+  FineWood: BlackForest
+  RoundLog: BlackForest
+  Copper: BlackForest
+  CopperOre: BlackForest
+  Tin: BlackForest
+  TinOre: BlackForest
+  Bronze: BlackForest
+  BronzeNails: BlackForest
+  Coal: BlackForest
+  BoneFragments: BlackForest
+  TrollHide: BlackForest
+  GreydwarfEye: BlackForest
+  SurtlingCore: BlackForest
+  AncientSeed: BlackForest
+  Thistle: BlackForest
+  BjornHide: BlackForest
+  BjornPaw: BlackForest
+  TrophyGreydwarf: BlackForest
+  TrophyFrostTroll: BlackForest
+  TrophySkeleton: BlackForest
+  CryptKey: BlackForest
+  # Swamp
+  Iron: Swamp
+  IronScrap: Swamp
+  IronOre: Swamp
+  IronNails: Swamp
+  ElderBark: Swamp
+  Chain: Swamp
+  Guck: Swamp
+  Bloodbag: Swamp
+  Ooze: Swamp
+  Entrails: Swamp
+  WitheredBone: Swamp
+  Root: Swamp
+  TrophyAbomination: Swamp
+  TrophyDraugr: Swamp
+  Wishbone: Swamp
+  # Mountain
+  Silver: Mountain
+  SilverOre: Mountain
+  Obsidian: Mountain
+  WolfPelt: Mountain
+  WolfFang: Mountain
+  WolfClaw: Mountain
+  FreezeGland: Mountain
+  DragonTear: Mountain
+  Crystal: Mountain
+  JuteRed: Mountain
+  FenrisHair: Mountain
+  FenrisClaw: Mountain
+  TrophyHatchling: Mountain
+  TrophyUlv: Mountain
+  TrophyCultist: Mountain
+  # Plains
+  BlackMetal: Plains
+  BlackMetalScrap: Plains
+  LinenThread: Plains
+  Flax: Plains
+  Barley: Plains
+  Needle: Plains
+  LoxPelt: Plains
+  Tar: Plains
+  GoblinTotem: Plains
+  UnbjornHide: Plains
+  Cloudberry: Plains
+  TrophyGoblin: Plains
+  TrophyGoblinBrute: Plains
+  TrophyGoblinShaman: Plains
+  TrophyDeathsquito: Plains
+  # Mistlands
+  Carapace: Mistlands
+  Eitr: Mistlands
+  BlackCore: Mistlands
+  Sap: Mistlands
+  YggdrasilWood: Mistlands
+  ScaleHide: Mistlands
+  Mandible: Mistlands
+  BlackMarble: Mistlands
+  RoyalJelly: Mistlands
+  Wisp: Mistlands
+  DvergrNeedle: Mistlands
+  DvergrKeyFragment: Mistlands
+  Softtissue: Mistlands
+  Bilebag: Mistlands
+  JuteBlue: Mistlands
+  TrophySeeker: Mistlands
+  TrophySeekerBrute: Mistlands
+  TrophyGjall: Mistlands
+  QueenDrop: Mistlands
+  # Ashlands
+  Flametal: AshLands
+  FlametalNew: AshLands
+  FlametalOre: AshLands
+  FlametalOreNew: AshLands
+  CharredBone: AshLands
+  AskHide: AshLands
+  AskBladder: AshLands
+  Blackwood: AshLands
+  CelestialFeather: AshLands
+  MoltenCore: AshLands
+  Grausten: AshLands
+  CharcoalResin: AshLands
+  BellFragment: AshLands
+  CharredCogwheel: AshLands
+  MorgenSinew: AshLands
+  MorgenHeart: AshLands
+  ProustitePowder: AshLands
+  SulfurStone: AshLands
+  VoltureEgg: AshLands
+  BonemawSerpentTooth: AshLands
+  # Deep North
+  Gold: DeepNorth
+  GoldOre: DeepNorth
+  AncientCoin: DeepNorth
+  CrownJewel: DeepNorth
+  OozeMork: DeepNorth
+  AncientGemstoneBlack: DeepNorth
+  AncientGemstoneGreen: DeepNorth
+  AncientGemstoneOrange: DeepNorth
+  AncientGemstonePurple: DeepNorth
+  Voidplasm: DeepNorth
+  ElakingHairBundle: DeepNorth
+  FaderEmber: AshLands
+  FrostCore: DeepNorth
+  OrbFrostFire: DeepNorth
+  OrbThunderBlood: DeepNorth
+  BarkaBranch: DeepNorth
+  Hook: DeepNorth
+  Ice: DeepNorth
+  Leatherstraps: DeepNorth
+  FrozenFuel: DeepNorth
+  MoleClaws: DeepNorth
+  MemorialCoal: DeepNorth
+  MooseHide: DeepNorth
+  MooseSinew: DeepNorth
+  NornThread: DeepNorth
+  SealBlubber: DeepNorth
+  SealHide: DeepNorth
+  Frostwood: DeepNorth
+  FirConeFrost: DeepNorth
+  WrithanRoots: DeepNorth
+  FrozenKingDrop: DeepNorth
+  HatefulBlood: DeepNorth
+  SmallPartsGoldUncooked: DeepNorth
+  TrophyBarka: DeepNorth
+  TrophyElaking: DeepNorth
+  TrophyMole: DeepNorth
+  TrophyBlob_Frost: DeepNorth
+  TrophyJotunWitch: DeepNorth
+  TrophyJotunWarrior: DeepNorth
+  TrophyMoose: DeepNorth
+  TrophySeal: DeepNorth
+  TrophyWrithan: DeepNorth
+
+# Hand-set item biomes (item prefab name), for any item the material rule gets wrong.
+# Items listed here can drop even if they have no crafting recipe (Deep North gear is cast in moulds, not crafted).
+itemBiomes:
+  # Deep North: Nord (Bloodgold) gear
+  AtgeirGold: DeepNorth
+  AxeGold: DeepNorth
+  BowGold: DeepNorth
+  CrossbowGold: DeepNorth
+  KnifeGold: DeepNorth
+  BattleaxeGold: DeepNorth
+  THSwordGold: DeepNorth
+  FistGold: DeepNorth
+  MaceGold: DeepNorth
+  SledgeGold: DeepNorth
+  SpearGold: DeepNorth
+  SwordGold: DeepNorth
+  ShieldGoldBuckler: DeepNorth
+  ShieldGoldTower: DeepNorth
+  ShieldGold: DeepNorth
+  # Deep North: Frostfire weapons
+  AtgeirGold_FrostFire: DeepNorth
+  AxeGold_FrostFire: DeepNorth
+  BowGold_FrostFire: DeepNorth
+  CrossbowGold_FrostFire: DeepNorth
+  KnifeGold_FrostFire: DeepNorth
+  BattleaxeGold_FrostFire: DeepNorth
+  THSwordGold_FrostFire: DeepNorth
+  FistGold_FrostFire: DeepNorth
+  MaceGold_FrostFire: DeepNorth
+  SledgeGold_FrostFire: DeepNorth
+  SpearGold_FrostFire: DeepNorth
+  SwordGold_FrostFire: DeepNorth
+  # Deep North: Thunderblood weapons
+  AtgeirGold_BloodLightning: DeepNorth
+  AxeGold_BloodLightning: DeepNorth
+  BowGold_BloodLightning: DeepNorth
+  CrossbowGold_BloodLightning: DeepNorth
+  KnifeGold_BloodLightning: DeepNorth
+  BattleaxeGold_BloodLightning: DeepNorth
+  THSwordGold_BloodLightning: DeepNorth
+  FistGold_BloodLightning: DeepNorth
+  MaceGold_BloodLightning: DeepNorth
+  SledgeGold_BloodLightning: DeepNorth
+  SpearGold_BloodLightning: DeepNorth
+  SwordGold_BloodLightning: DeepNorth
+  # Deep North: staffs and the Voidcaller
+  StaffOrbofAhri: DeepNorth        # Echo Spike
+  StaffThunderBlood: DeepNorth     # Lightning Strike
+  StaffFrostOrbs: DeepNorth        # Northern Vengeance
+  StaffSpiritCaller: DeepNorth     # Spirit Caller
+  KnifeVoid: DeepNorth             # Voidcaller
+  # Deep North: armor, capes, shields and trinkets
+  ArmorDeepNorthHeavyChest: DeepNorth
+  ArmorDeepNorthHeavylegs: DeepNorth
+  HelmetDNHeavy: DeepNorth
+  ArmorDeepNorthMediumChest: DeepNorth
+  ArmorDeepNorthMediumlegs: DeepNorth
+  HelmetDNMediumHood: DeepNorth
+  ArmorDeepNorthMageChest: DeepNorth
+  ArmorDeepNorthMagelegs: DeepNorth
+  HelmetDNMage: DeepNorth
+  CapeDeepNorthMage: DeepNorth
+  CapeDeepNorth: DeepNorth
+  HelmetRootCrown: DeepNorth
+  ShieldRoots: DeepNorth
+  TrinketBloodGoldHealth: DeepNorth  # Neckstabber
+  TrinketBloodGoldStamina: DeepNorth # Witch Crown

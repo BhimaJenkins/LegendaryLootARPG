@@ -1,0 +1,1327 @@
+# Generated from the Sheet by Tools/export_sheet.py. Edit the Sheet, then export again.
+# Each affix: tooltip (X = rolled value), where it can roll, and its value range per tier.
+
+- id: "ModifyArmor"
+  name: "Armor +X"
+  tooltip: "+X armor"
+  group: "Armor & resistances"
+  allowedOn: ["Helmet", "Chest", "Legs", "Shoulder"]
+  values:
+    Uncommon: [1, 2]
+    Magic: [1, 3]
+    Rare: [3, 5]
+    Epic: [6, 10]
+    Legendary: [8, 12]
+
+- id: "AddBluntResistancePercentage"
+  name: "Blunt Resistance X%"
+  tooltip: "Take X% less blunt damage"
+  group: "Armor & resistances"
+  allowedOn: ["Helmet", "Chest", "Legs", "Shoulder"]
+  values:
+    Uncommon: [2, 4]
+    Magic: [3, 5]
+    Rare: [5, 10]
+    Epic: [10, 13]
+    Legendary: [13, 20]
+
+- id: "AddElementalResistancePercentage"
+  name: "Elemental Resistance X%"
+  tooltip: "Take X% less fire, frost, lightning and poison damage"
+  group: "Armor & resistances"
+  allowedOn: ["Helmet", "Chest", "Legs", "Shoulder"]
+  values:
+    Uncommon: [2, 4]
+    Magic: [3, 5]
+    Rare: [5, 10]
+    Epic: [10, 13]
+    Legendary: [13, 20]
+
+- id: "AddFireResistancePercentage"
+  name: "Fire Resistance X%"
+  tooltip: "Take X% less fire damage"
+  group: "Armor & resistances"
+  allowedOn: ["Helmet", "Chest", "Legs", "Shoulder"]
+  values:
+    Uncommon: [2, 4]
+    Magic: [3, 5]
+    Rare: [5, 10]
+    Epic: [10, 13]
+    Legendary: [13, 20]
+
+- id: "AddFrostResistancePercentage"
+  name: "Frost Resistance X%"
+  tooltip: "Take X% less frost damage"
+  group: "Armor & resistances"
+  allowedOn: ["Helmet", "Chest", "Legs", "Shoulder"]
+  values:
+    Uncommon: [2, 4]
+    Magic: [3, 5]
+    Rare: [5, 10]
+    Epic: [10, 13]
+    Legendary: [13, 20]
+
+- id: "AddLightningResistancePercentage"
+  name: "Lightning Resistance X%"
+  tooltip: "Take X% less lightning damage"
+  group: "Armor & resistances"
+  allowedOn: ["Helmet", "Chest", "Legs", "Shoulder"]
+  values:
+    Uncommon: [2, 4]
+    Magic: [3, 5]
+    Rare: [5, 10]
+    Epic: [10, 13]
+    Legendary: [13, 20]
+
+- id: "AddPhysicalResistancePercentage"
+  name: "Physical Resistance X%"
+  tooltip: "Take X% less blunt, slash and pierce damage"
+  group: "Armor & resistances"
+  allowedOn: ["Helmet", "Chest", "Legs", "Shoulder"]
+  values:
+    Uncommon: [2, 4]
+    Magic: [2, 4]
+    Rare: [3, 6]
+    Epic: [4, 8]
+    Legendary: [5, 10]
+
+- id: "AddPiercingResistancePercentage"
+  name: "Piercing Resistance X%"
+  tooltip: "Take X% less pierce damage"
+  group: "Armor & resistances"
+  allowedOn: ["Helmet", "Chest", "Legs", "Shoulder"]
+  values:
+    Uncommon: [2, 4]
+    Magic: [3, 5]
+    Rare: [5, 10]
+    Epic: [10, 13]
+    Legendary: [13, 20]
+
+- id: "AddPoisonResistancePercentage"
+  name: "Poison Resistance X%"
+  tooltip: "Take X% less poison damage"
+  group: "Armor & resistances"
+  allowedOn: ["Helmet", "Chest", "Legs", "Shoulder"]
+  values:
+    Uncommon: [2, 4]
+    Magic: [3, 5]
+    Rare: [5, 10]
+    Epic: [10, 13]
+    Legendary: [13, 20]
+
+- id: "AddSlashingResistancePercentage"
+  name: "Slashing Resistance X%"
+  tooltip: "Take X% less slash damage"
+  group: "Armor & resistances"
+  allowedOn: ["Helmet", "Chest", "Legs", "Shoulder"]
+  values:
+    Uncommon: [2, 4]
+    Magic: [1, 3]
+    Rare: [2, 6]
+    Epic: [3, 9]
+    Legendary: [4, 12]
+
+- id: "AddSpiritResistancePercentage"
+  name: "Spirit Resistance X%"
+  tooltip: "Take X% less spirit damage"
+  group: "Armor & resistances"
+  allowedOn: ["Helmet", "Chest", "Legs", "Shoulder", "Utility", "Trinket", "Shield", "Torch"]
+  values:
+    Uncommon: [2, 4]
+    Magic: [3, 5]
+    Rare: [5, 10]
+    Epic: [10, 13]
+    Legendary: [13, 20]
+
+- id: "ModifyBlockPower"
+  name: "Block +X%"
+  tooltip: "+X% block armor"
+  group: "Block / parry / shield"
+  allowedOn: ["Shield"]
+  values:
+    Uncommon: [1, 3]
+    Magic: [2, 4]
+    Rare: [4, 8]
+    Epic: [6, 12]
+    Legendary: [8, 16]
+
+- id: "ModifyBlockForce"
+  name: "Block Force +X%"
+  tooltip: "Blocks push enemies back X% harder"
+  group: "Block / parry / shield"
+  allowedOn: ["Shield"]
+  values:
+    Uncommon: [2, 4]
+    Magic: [5, 7]
+    Rare: [7, 10]
+    Epic: [10, 13]
+    Legendary: [13, 16]
+
+- id: "ModifyBlockStaminaUse"
+  name: "Block Stamina Use -X%"
+  tooltip: "Blocking costs X% less stamina"
+  group: "Block / parry / shield"
+  allowedOn: ["Shield"]
+  values:
+    Uncommon: [2, 4]
+    Magic: [2, 6]
+    Rare: [3, 9]
+    Epic: [4, 12]
+    Legendary: [5, 15]
+
+- id: "Immovable"
+  name: "Immovable"
+  tooltip: "Can't be knocked back or staggered while blocking"
+  group: "Block / parry / shield"
+  allowedOn: ["Shield"]
+  toggle: true
+  values:
+    Epic: [1, 1]
+    Legendary: [1, 1]
+
+- id: "ModifyParry"
+  name: "Parry +X%"
+  tooltip: "Parries are X% stronger"
+  group: "Block / parry / shield"
+  allowedOn: ["Shield"]
+  values:
+    Uncommon: [1, 3]
+    Magic: [2, 4]
+    Rare: [4, 8]
+    Epic: [6, 12]
+    Legendary: [8, 16]
+
+- id: "ModifyParryWindow"
+  name: "Parry Window +X ms"
+  tooltip: "Parry window is X ms longer"
+  group: "Block / parry / shield"
+  allowedOn: ["Shield", "OneHanded", "TwoHanded", "TwoHandedLeft"]
+  values:
+    Uncommon: [20, 30]
+    Magic: [40, 60]
+    Rare: [50, 70]
+    Epic: [60, 80]
+    Legendary: [70, 90]
+
+- id: "vampiric parry"
+  name: "Vampiric Parry"
+  tooltip: "Parrying heals X% of max health"
+  group: "Block / parry / shield"
+  allowedOn: ["Shield", "OneHanded", "TwoHanded", "TwoHandedLeft", "Staff"]
+  values:
+    Rare: [5, 5]
+    Epic: [10, 10]
+    Legendary: [15, 15]
+
+- id: "DecreaseForsakenCooldown"
+  name: "Forsaken Power Cooldown -X%"
+  tooltip: "Forsaken power recharges X% faster"
+  group: "Consumables & cooldowns"
+  allowedOn: ["Utility", "Trinket"]
+  values:
+    Uncommon: [2, 5]
+    Magic: [5, 10]
+    Rare: [10, 20]
+    Epic: [20, 30]
+    Legendary: [30, 40]
+
+- id: "raging"
+  name: "Raging"
+  tooltip: "Gain adrenaline X% faster"
+  group: "Consumables & cooldowns"
+  allowedOn: ["Trinket"]
+  values:
+    Uncommon: [0.25, 0.25]
+    Magic: [0.3, 0.3]
+    Rare: [0.4, 0.4]
+    Epic: [0.5, 0.5]
+    Legendary: [0.6, 0.6]
+
+- id: "resentful adrenaline"
+  name: "Resentful Adrenaline"
+  tooltip: "Adrenaline fades X% slower"
+  group: "Consumables & cooldowns"
+  allowedOn: ["Trinket"]
+  values:
+    Uncommon: [0.25, 0.25]
+    Magic: [0.3, 0.3]
+    Rare: [0.4, 0.4]
+    Epic: [0.5, 0.5]
+    Legendary: [0.6, 0.6]
+
+- id: "ModifyDamage"
+  name: "All Damage +X%"
+  tooltip: "+X% damage"
+  group: "Elemental weapon damage"
+  allowedOn: ["OneHanded", "TwoHanded", "TwoHandedLeft", "Bow", "Crossbow", "Torch", "Staff"]
+  values:
+    Uncommon: [1, 3]
+    Magic: [3, 5]
+    Rare: [5, 7]
+    Epic: [7, 10]
+    Legendary: [10, 15]
+
+- id: "AddFireDamage"
+  name: "Imbue Fire Damage X%"
+  tooltip: "Adds X% of weapon damage as fire"
+  group: "Elemental weapon damage"
+  allowedOn: ["OneHanded", "TwoHanded", "TwoHandedLeft", "Bow", "Crossbow", "Torch", "Staff"]
+  values:
+    Magic: [2, 4]
+    Rare: [3, 6]
+    Epic: [4, 8]
+    Legendary: [5, 10]
+
+- id: "AddFrostDamage"
+  name: "Imbue Frost Damage X%"
+  tooltip: "Adds X% of weapon damage as frost"
+  group: "Elemental weapon damage"
+  allowedOn: ["OneHanded", "TwoHanded", "TwoHandedLeft", "Bow", "Crossbow", "Torch", "Staff"]
+  values:
+    Magic: [2, 4]
+    Rare: [3, 6]
+    Epic: [4, 8]
+    Legendary: [5, 10]
+
+- id: "AddLightningDamage"
+  name: "Imbue Lightning Damage X%"
+  tooltip: "Adds X% of weapon damage as lightning"
+  group: "Elemental weapon damage"
+  allowedOn: ["OneHanded", "TwoHanded", "TwoHandedLeft", "Bow", "Crossbow", "Torch", "Staff"]
+  values:
+    Magic: [2, 4]
+    Rare: [3, 6]
+    Epic: [4, 8]
+    Legendary: [5, 10]
+
+- id: "AddPoisonDamage"
+  name: "Imbue Poison Damage X%"
+  tooltip: "Adds X% of weapon damage as poison"
+  group: "Elemental weapon damage"
+  allowedOn: ["OneHanded", "TwoHanded", "TwoHandedLeft", "Bow", "Crossbow", "Torch", "Staff"]
+  values:
+    Magic: [2, 4]
+    Rare: [3, 6]
+    Epic: [4, 8]
+    Legendary: [5, 10]
+
+- id: "AddSpiritDamage"
+  name: "Imbue Spirit Damage X%"
+  tooltip: "Adds X% of weapon damage as spirit"
+  group: "Elemental weapon damage"
+  allowedOn: ["OneHanded", "TwoHanded", "TwoHandedLeft", "Bow", "Crossbow", "Torch", "Staff"]
+  values:
+    Magic: [2, 4]
+    Rare: [3, 6]
+    Epic: [4, 8]
+    Legendary: [5, 10]
+
+- id: "Warmth"
+  name: "Warmth"
+  tooltip: "You never get cold"
+  group: "Environment (cold/wet/mist)"
+  allowedOn: ["Shoulder"]
+  toggle: true
+  values:
+    Uncommon: [1, 1]
+    Magic: [1, 1]
+    Rare: [1, 1]
+    Epic: [1, 1]
+    Legendary: [1, 1]
+
+- id: "Waterproof"
+  name: "Waterproof"
+  tooltip: "Rain doesn't make you wet"
+  group: "Environment (cold/wet/mist)"
+  allowedOn: ["Shoulder"]
+  toggle: true
+  values:
+    Uncommon: [1, 1]
+    Magic: [1, 1]
+    Rare: [1, 1]
+    Epic: [1, 1]
+    Legendary: [1, 1]
+
+- id: "wisplight"
+  name: "Wisplight"
+  tooltip: "Clears the mist around you"
+  group: "Environment (cold/wet/mist)"
+  allowedOn: ["Utility"]
+  toggle: true
+  values:
+    Uncommon: [1, 1]
+    Magic: [1, 1]
+    Rare: [1, 1]
+    Epic: [1, 1]
+    Legendary: [1, 1]
+
+- id: "IncreaseTreeDrop"
+  name: "Lumberjacking Drop +X"
+  tooltip: "Trees and logs drop +X wood"
+  group: "Gathering / building / tools"
+  allowedOn: []
+  requiredSkills: ["Axes"]
+  values:
+    Magic: [2, 2]
+    Rare: [3, 3]
+    Epic: [4, 4]
+    Legendary: [5, 5]
+
+- id: "RemoveSpeedPenalty"
+  name: "Unhindered"
+  tooltip: "No movement speed penalty from this item"
+  group: "Gear properties (weight/durability)"
+  allowedOn: ["OneHanded", "TwoHanded", "TwoHandedLeft", "Bow", "Crossbow", "Torch", "Shield", "Helmet", "Chest", "Legs", "Shoulder", "Staff"]
+  requires: ["movementPenalty"]
+  toggle: true
+  values:
+    Uncommon: [1, 1]
+    Magic: [1, 1]
+    Rare: [1, 1]
+    Epic: [1, 1]
+    Legendary: [1, 1]
+
+- id: "AddAllSkills"
+  name: "All Skills +X"
+  tooltip: "+X to all skills"
+  group: "Legendary / set bonus"
+  allowedOn: []
+  values:
+    Epic: [10, 10]
+    Legendary: [15, 15]
+
+- id: "Artillery"
+  name: "Artillery: Crossbow fireballs, +X% damage"
+  tooltip: "Crossbow fires exploding fireballs for +X% damage"
+  group: "Legendary / set bonus"
+  allowedOn: []
+  values:
+    Epic: [20, 20]
+    Legendary: [25, 25]
+
+- id: "CoilingVenom"
+  name: "Coiling Venom: X% physical as venom"
+  tooltip: "X% of physical damage becomes stacking poison"
+  group: "Legendary / set bonus"
+  allowedOn: ["OneHanded", "Bow", "Crossbow"]
+  values:
+    Epic: [40, 40]
+    Legendary: [50, 50]
+
+- id: "Firebrand"
+  name: "Firebrand: Third swing erupts, X% damage"
+  tooltip: "Every third swing erupts in fire for X% damage"
+  group: "Legendary / set bonus"
+  allowedOn: []
+  values:
+    Epic: [50, 50]
+    Legendary: [75, 75]
+
+- id: "FrostDamageAOE"
+  name: "Frost Cone: +X% weapon damage"
+  tooltip: "Frost hits also blast a cone for X% damage"
+  group: "Legendary / set bonus"
+  allowedOn: []
+  requires: ["frostDamage"]
+  values:
+    Magic: [5, 5]
+    Rare: [10, 10]
+    Epic: [15, 15]
+    Legendary: [20, 20]
+
+- id: "GiantsBlood"
+  name: "Jotunn's Blood +X%"
+  tooltip: "Grow larger: more carry weight, regen and damage (+X%)"
+  group: "Legendary / set bonus"
+  allowedOn: []
+  values:
+    Legendary: [10, 10]
+
+- id: "PiercingBolts"
+  name: "Piercing Bolts: Bolts pierce, keeping X%"
+  tooltip: "Bolts pass through enemies, keeping X% damage"
+  group: "Legendary / set bonus"
+  allowedOn: ["Crossbow"]
+  values:
+    Epic: [65, 65]
+    Legendary: [75, 75]
+
+- id: "Sniper"
+  name: "Sniper: +X% damage per metre past Z m"
+  tooltip: "Arrows fly 2x faster; +X% damage per metre past 6 m"
+  group: "Legendary / set bonus"
+  allowedOn: []
+  values:
+    Epic: [0.5, 1.5]
+    Legendary: [1, 3]
+
+- id: "ConvertHealthToEitr"
+  name: "X% of Max Health converted to Max Eitr"
+  tooltip: "X% of max health becomes max eitr"
+  group: "Legendary / set bonus"
+  allowedOn: ["Staff"]
+  values:
+    Epic: [30, 30]
+    Legendary: [40, 40]
+
+- id: "AddCarryWeight"
+  name: "Carry Weight +X"
+  tooltip: "+X carry weight"
+  group: "Loot / XP / exploration"
+  allowedOn: ["Shoulder", "Utility", "Trinket"]
+  values:
+    Uncommon: [10, 20]
+    Magic: [25, 50]
+    Rare: [40, 75]
+    Epic: [70, 100]
+    Legendary: [90, 125]
+
+- id: "Comfortable"
+  name: "Comfort +X"
+  tooltip: "+X comfort when resting"
+  group: "Loot / XP / exploration"
+  allowedOn: ["Utility", "Trinket"]
+  values:
+    Epic: [1, 1]
+    Legendary: [2, 2]
+
+- id: "ModifyDiscoveryRadius"
+  name: "Discovery Radius +X%"
+  tooltip: "Reveal X% more of the map as you explore"
+  group: "Loot / XP / exploration"
+  allowedOn: ["Helmet"]
+  values:
+    Uncommon: [1, 5]
+    Magic: [3, 8]
+    Rare: [8, 10]
+    Epic: [10, 15]
+    Legendary: [15, 20]
+
+- id: "HeadHunter"
+  name: "Headhunter +X"
+  tooltip: "+X% chance for trophy drops"
+  group: "Loot / XP / exploration"
+  allowedOn: []
+  values:
+    Uncommon: [10, 10]
+    Magic: [15, 15]
+    Rare: [20, 20]
+    Epic: [25, 25]
+    Legendary: [30, 30]
+
+- id: "Luck"
+  name: "Unique Find +X%"
+  tooltip: "+X% chance for Unique drops"
+  group: "Loot / XP / exploration"
+  allowedOn: []
+  values:
+    Uncommon: [1, 1]
+    Magic: [1, 2]
+    Rare: [2, 3]
+    Epic: [3, 4]
+    Legendary: [4, 5]
+
+- id: "Prosperity"
+  name: "Prosperity +X%"
+  tooltip: "X% chance for nearby kills to drop extra loot"
+  group: "Loot / XP / exploration"
+  allowedOn: ["Utility", "Trinket"]
+  values:
+    Uncommon: [1, 2]
+    Magic: [1, 3]
+    Rare: [3, 6]
+    Epic: [6, 9]
+    Legendary: [9, 12]
+
+- id: "QuickLearner"
+  name: "Quick Learner +X%"
+  tooltip: "Skills level up X% faster"
+  group: "Loot / XP / exploration"
+  allowedOn: ["Helmet"]
+  values:
+    Uncommon: [1, 2]
+    Magic: [1, 3]
+    Rare: [2, 5]
+    Epic: [3, 7]
+    Legendary: [4, 10]
+
+- id: "Riches"
+  name: "Riches +X%"
+  tooltip: "+X% chance for enemies to drop coins"
+  group: "Loot / XP / exploration"
+  allowedOn: ["Utility", "Trinket"]
+  values:
+    Uncommon: [1, 2]
+    Magic: [2, 3]
+    Rare: [3, 5]
+    Epic: [5, 8]
+    Legendary: [8, 10]
+
+- id: "daring"
+  name: "Daring"
+  tooltip: "20% chance nearby creatures are 1 star higher"
+  group: "Loot / XP / exploration"
+  allowedOn: ["Utility"]
+  toggle: true
+  values:
+    Uncommon: [1, 1]
+    Magic: [1, 1]
+    Rare: [1, 1]
+    Epic: [1, 1]
+    Legendary: [1, 1]
+
+- id: "gourmet"
+  name: "Gourmet"
+  tooltip: "Food lasts X% longer"
+  group: "Loot / XP / exploration"
+  allowedOn: ["Helmet"]
+  values:
+    Uncommon: [5, 5]
+    Magic: [10, 10]
+    Rare: [20, 20]
+    Epic: [30, 30]
+    Legendary: [40, 40]
+
+- id: "hercules"
+  name: "Hercules"
+  tooltip: "+X% carry weight"
+  group: "Loot / XP / exploration"
+  allowedOn: ["Utility"]
+  values:
+    Uncommon: [2, 2]
+    Magic: [5, 5]
+    Rare: [10, 10]
+    Epic: [13, 13]
+    Legendary: [15, 15]
+
+- id: "ModifyAttackEitrUse"
+  name: "Attack Eitr Use -X%"
+  tooltip: "Spells cost X% less eitr"
+  group: "Magic (staff/eitr/summons)"
+  allowedOn: ["Staff"]
+  values:
+    Uncommon: [2, 4]
+    Magic: [4, 7]
+    Rare: [7, 12]
+    Epic: [12, 15]
+    Legendary: [15, 20]
+
+- id: "ModifyAttackHealthUse"
+  name: "Attack Health Use -X%"
+  tooltip: "Blood magic costs X% less health"
+  group: "Magic (staff/eitr/summons)"
+  allowedOn: []
+  allowedSkills: ["BloodMagic"]
+  values:
+    Uncommon: [2, 4]
+    Magic: [3, 5]
+    Rare: [5, 10]
+    Epic: [10, 15]
+    Legendary: [15, 25]
+
+- id: "IncreaseEitr"
+  name: "Eitr +X"
+  tooltip: "+X max eitr"
+  group: "Magic (staff/eitr/summons)"
+  allowedOn: ["Helmet", "Staff", "Utility", "Trinket"]
+  values:
+    Uncommon: [5, 10]
+    Magic: [10, 15]
+    Rare: [15, 22]
+    Epic: [22, 30]
+    Legendary: [30, 50]
+
+- id: "ModifyEitrRegen"
+  name: "Eitr Regen +X%"
+  tooltip: "Eitr regenerates X% faster"
+  group: "Magic (staff/eitr/summons)"
+  allowedOn: ["Shoulder", "Staff"]
+  values:
+    Uncommon: [2, 5]
+    Magic: [5, 10]
+    Rare: [10, 15]
+    Epic: [15, 20]
+    Legendary: [20, 30]
+
+- id: "ModifySummonDamage"
+  name: "Summons Damage +X%"
+  tooltip: "Your summons deal X% more damage"
+  group: "Magic (staff/eitr/summons)"
+  allowedOn: ["Helmet", "Utility", "Trinket", "Staff", "Chest", "Legs", "Shoulder"]
+  values:
+    Uncommon: [3, 5]
+    Magic: [5, 10]
+    Rare: [10, 15]
+    Epic: [15, 20]
+    Legendary: [20, 30]
+
+- id: "ModifySummonHealth"
+  name: "Summons Health +X%"
+  tooltip: "Your summons have X% more health"
+  group: "Magic (staff/eitr/summons)"
+  allowedOn: ["Helmet", "Utility", "Trinket", "Staff", "Chest", "Legs", "Shoulder"]
+  values:
+    Uncommon: [3, 5]
+    Magic: [5, 10]
+    Rare: [10, 15]
+    Epic: [15, 20]
+    Legendary: [20, 30]
+
+- id: "DoubleJump"
+  name: "Double Jump"
+  tooltip: "Double Jump"
+  group: "Mobility & stamina"
+  allowedOn: ["Legs", "Shoulder", "Trinket", "Helmet"]
+  toggle: true
+  values:
+    Uncommon: [1, 1]
+    Magic: [1, 1]
+    Rare: [1, 1]
+    Epic: [1, 1]
+    Legendary: [1, 1]
+
+- id: "ModifyDodgeStaminaUse"
+  name: "Dodge Stamina Use -X%"
+  tooltip: "Dodging costs X% less stamina"
+  group: "Mobility & stamina"
+  allowedOn: ["Legs", "Shoulder", "Trinket", "Helmet"]
+  values:
+    Magic: [1, 4]
+    Rare: [2, 8]
+    Epic: [4, 10]
+    Legendary: [6, 12]
+
+- id: "FeatherFall"
+  name: "Feather Fall"
+  tooltip: "Fall slowly and take no fall damage"
+  group: "Mobility & stamina"
+  allowedOn: ["Legs", "Shoulder", "Trinket", "Helmet", "Chest"]
+  toggle: true
+  values:
+    Uncommon: [1, 1]
+    Magic: [1, 1]
+    Rare: [1, 1]
+    Epic: [1, 1]
+    Legendary: [1, 1]
+
+- id: "ModifyJumpStaminaUse"
+  name: "Jump Stamina Use -X%"
+  tooltip: "Jumping costs X% less stamina"
+  group: "Mobility & stamina"
+  allowedOn: ["Legs", "Utility", "Trinket"]
+  values:
+    Uncommon: [3, 5]
+    Magic: [5, 8]
+    Rare: [8, 12]
+    Epic: [12, 15]
+    Legendary: [15, 20]
+
+- id: "AddMovementSkills"
+  name: "Movement Skills +X"
+  tooltip: "+X to Run, Jump, Swim and Sneak"
+  group: "Mobility & stamina"
+  allowedOn: ["Legs", "Utility", "Trinket"]
+  values:
+    Uncommon: [2, 3]
+    Magic: [3, 5]
+    Rare: [5, 8]
+    Epic: [8, 10]
+    Legendary: [10, 12]
+
+- id: "ModifyMovementSpeed"
+  name: "Movement Speed +X%"
+  tooltip: "Move X% faster"
+  group: "Mobility & stamina"
+  allowedOn: ["Legs", "Utility", "Trinket"]
+  values:
+    Uncommon: [1, 2]
+    Magic: [1, 3]
+    Rare: [3, 5]
+    Epic: [5, 8]
+    Legendary: [8, 10]
+
+- id: "ModifySprintStaminaUse"
+  name: "Sprint Stamina Use -X%"
+  tooltip: "Sprinting costs X% less stamina"
+  group: "Mobility & stamina"
+  allowedOn: ["Legs", "Utility", "Trinket"]
+  values:
+    Uncommon: [1, 2]
+    Magic: [4, 8]
+    Rare: [5, 10]
+    Epic: [6, 12]
+    Legendary: [8, 16]
+
+- id: "IncreaseStamina"
+  name: "Stamina +X"
+  tooltip: "+X max stamina"
+  group: "Mobility & stamina"
+  allowedOn: ["Legs", "Utility", "Trinket"]
+  values:
+    Uncommon: [2, 5]
+    Magic: [4, 10]
+    Rare: [6, 12]
+    Epic: [8, 16]
+    Legendary: [10, 20]
+
+- id: "ModifyStaminaRegen"
+  name: "Stamina Regen +X%"
+  tooltip: "Stamina regenerates X% faster"
+  group: "Mobility & stamina"
+  allowedOn: ["Legs", "Utility", "Trinket"]
+  values:
+    Uncommon: [2, 3]
+    Magic: [2, 4]
+    Rare: [4, 8]
+    Epic: [6, 12]
+    Legendary: [8, 16]
+
+- id: "momentum"
+  name: "Momentum"
+  tooltip: "Hitting a creature restores X stamina"
+  group: "Mobility & stamina"
+  allowedOn: ["Legs"]
+  values:
+    Uncommon: [1, 2]
+    Magic: [2, 4]
+    Rare: [4, 8]
+    Epic: [6, 12]
+    Legendary: [8, 16]
+
+- id: "wind walk"
+  name: "Windwalk"
+  tooltip: "Move 20% faster with the wind at your back"
+  group: "Mobility & stamina"
+  allowedOn: ["Shoulder", "Legs", "Helmet"]
+  toggle: true
+  values:
+    Uncommon: [1, 1]
+    Magic: [1, 1]
+    Rare: [1, 1]
+    Epic: [1, 1]
+    Legendary: [1, 1]
+
+- id: "ModifyBackstab"
+  name: "Backstab +X%"
+  tooltip: "+X% sneak attack damage"
+  group: "Physical weapon damage"
+  allowedOn: []
+  requiredSkills: ["Bows", "Knives"]
+  values:
+    Uncommon: [2, 3]
+    Magic: [4, 8]
+    Rare: [8, 10]
+    Epic: [10, 13]
+    Legendary: [13, 16]
+
+- id: "AddBluntDamage"
+  name: "Blunt Damage +X%"
+  tooltip: "Adds X% of weapon damage as blunt"
+  group: "Physical weapon damage"
+  allowedOn: ["OneHanded", "TwoHanded", "Torch"]
+  requiredSkills: ["Clubs"]
+  values:
+    Uncommon: [2, 3]
+    Magic: [2, 4]
+    Rare: [3, 6]
+    Epic: [4, 8]
+    Legendary: [5, 10]
+
+- id: "Executioner"
+  name: "Executioner +X%"
+  tooltip: "+X% damage on your first hit vs enemies below 20% health"
+  group: "Physical weapon damage"
+  allowedOn: ["OneHanded", "TwoHanded", "Bow", "Crossbow"]
+  values:
+    Epic: [50, 100]
+    Legendary: [100, 150]
+
+- id: "Opportunist"
+  name: "Opportunist +X%"
+  tooltip: "X% chance for hits on staggered enemies to deal sneak attack damage"
+  group: "Physical weapon damage"
+  allowedOn: []
+  requiredSkills: ["Clubs", "Knives", "Unarmed"]
+  values:
+    Uncommon: [3, 5]
+    Magic: [5, 10]
+    Rare: [10, 15]
+    Epic: [15, 20]
+    Legendary: [20, 25]
+
+- id: "Paralyze"
+  name: "Paralyze X Seconds"
+  tooltip: "Hits paralyze enemies for X seconds"
+  group: "Physical weapon damage"
+  allowedOn: ["OneHanded"]
+  requiredSkills: ["Clubs"]
+  values:
+    Uncommon: [0.5, 1]
+    Magic: [1, 1.5]
+    Rare: [1.5, 2]
+    Epic: [2, 3]
+    Legendary: [3, 4]
+
+- id: "AddSlashingDamage"
+  name: "Slash Damage +X%"
+  tooltip: "Adds X% of weapon damage as slash"
+  group: "Physical weapon damage"
+  allowedOn: ["OneHanded", "TwoHanded", "Bow", "Crossbow", "Torch"]
+  requiredSkills: ["Swords", "Unarmed"]
+  values:
+    Uncommon: [2, 3]
+    Magic: [2, 4]
+    Rare: [3, 6]
+    Epic: [4, 8]
+    Legendary: [5, 10]
+
+- id: "Slow"
+  name: "Slow +X%"
+  tooltip: "Hits slow enemies by X% for 2 seconds"
+  group: "Physical weapon damage"
+  allowedOn: ["OneHanded", "TwoHanded", "Bow", "Crossbow"]
+  values:
+    Uncommon: [2, 4]
+    Magic: [4, 8]
+    Rare: [6, 10]
+    Epic: [8, 12]
+    Legendary: [10, 16]
+
+- id: "ModifyStaggerDamage"
+  name: "Stagger Damage +X%"
+  tooltip: "+X% damage to staggered enemies"
+  group: "Physical weapon damage"
+  allowedOn: ["OneHanded", "TwoHanded", "Bow", "Crossbow"]
+  values:
+    Uncommon: [3, 5]
+    Magic: [5, 10]
+    Rare: [10, 15]
+    Epic: [15, 20]
+    Legendary: [20, 25]
+
+- id: "perforation"
+  name: "Perforation"
+  tooltip: "Hits make enemies bleed for 15% extra damage"
+  group: "Physical weapon damage"
+  allowedOn: []
+  allowedSkills: ["Knives"]
+  toggle: true
+  values:
+    Uncommon: [1, 1]
+    Magic: [1, 1]
+    Rare: [1, 1]
+    Epic: [1, 1]
+    Legendary: [1, 1]
+
+- id: "shadow hit"
+  name: "Shadow Hit"
+  tooltip: "X% chance to also hit 3 nearby enemies"
+  group: "Physical weapon damage"
+  allowedOn: ["OneHanded", "TwoHanded", "TwoHandedLeft", "Bow", "Crossbow", "Staff", "Torch"]
+  values:
+    Uncommon: [3, 5]
+    Magic: [5, 7]
+    Rare: [7, 10]
+    Epic: [10, 15]
+    Legendary: [15, 25]
+
+- id: "ExplosiveArrows"
+  name: "Explosive Shot +X%"
+  tooltip: "Projectiles explode for X% damage on impact"
+  group: "Ranged (bow/crossbow)"
+  allowedOn: ["Bow", "Crossbow"]
+  values:
+    Uncommon: [2, 5]
+    Magic: [5, 7]
+    Rare: [7, 12]
+    Epic: [12, 16]
+    Legendary: [16, 22]
+
+- id: "QuickDraw"
+  name: "Quick Draw +X%"
+  tooltip: "Draw and reload X% faster"
+  group: "Ranged (bow/crossbow)"
+  allowedOn: ["Bow", "Crossbow"]
+  values:
+    Uncommon: [2, 5]
+    Magic: [5, 7]
+    Rare: [7, 10]
+    Epic: [10, 13]
+    Legendary: [13, 15]
+
+- id: "echo"
+  name: "Echo"
+  tooltip: "X% chance to fire 2 extra arrows for free"
+  group: "Ranged (bow/crossbow)"
+  allowedOn: ["Bow", "Crossbow"]
+  values:
+    Uncommon: [5, 8]
+    Magic: [8, 12]
+    Rare: [12, 17]
+    Epic: [17, 20]
+    Legendary: [20, 23]
+
+- id: "elemental chaos"
+  name: "Elemental Chaos"
+  tooltip: "X% chance for +20% random elemental damage"
+  group: "Ranged (bow/crossbow)"
+  allowedOn: ["Bow", "Crossbow"]
+  values:
+    Uncommon: [5, 10]
+    Magic: [10, 15]
+    Rare: [15, 20]
+    Epic: [20, 25]
+    Legendary: [25, 30]
+
+- id: "necromancer"
+  name: "Necromancer"
+  tooltip: "X% chance to summon a skeleton archer"
+  group: "Ranged (bow/crossbow)"
+  allowedOn: ["Bow", "Crossbow"]
+  values:
+    Uncommon: [10, 10]
+    Magic: [13, 13]
+    Rare: [15, 15]
+    Epic: [20, 20]
+    Legendary: [30, 30]
+
+- id: "DodgeBuff"
+  name: "Dodge Damage Buff +X%"
+  tooltip: "Dodging an attack grants +X% damage for 10 seconds"
+  group: "Survival (HP/regen/mitigation)"
+  allowedOn: ["Legs", "Utility", "Trinket"]
+  values:
+    Magic: [5, 10]
+    Rare: [10, 15]
+    Epic: [15, 20]
+    Legendary: [20, 25]
+
+- id: "IncreaseHealth"
+  name: "Health +X"
+  tooltip: "+X max health"
+  group: "Survival (HP/regen/mitigation)"
+  allowedOn: ["Chest", "Shoulder", "Legs", "Helmet", "Utility", "Trinket"]
+  values:
+    Uncommon: [5, 10]
+    Magic: [10, 15]
+    Rare: [15, 20]
+    Epic: [20, 25]
+    Legendary: [25, 30]
+
+- id: "ModifyHealthRegen"
+  name: "Health Regen +X%"
+  tooltip: "Health regenerates X% faster"
+  group: "Survival (HP/regen/mitigation)"
+  allowedOn: ["Helmet", "Shoulder"]
+  values:
+    Uncommon: [2, 3]
+    Magic: [2, 4]
+    Rare: [4, 8]
+    Epic: [6, 12]
+    Legendary: [8, 16]
+
+- id: "ReflectDamage"
+  name: "Thorn Damage +X%"
+  tooltip: "Reflect X% of damage taken back at attackers"
+  group: "Survival (HP/regen/mitigation)"
+  allowedOn: ["Chest", "Shield"]
+  values:
+    Uncommon: [2, 3]
+    Magic: [3, 5]
+    Rare: [5, 10]
+    Epic: [10, 13]
+    Legendary: [13, 20]
+
+- id: "pain tolerance"
+  name: "Pain Tolerance"
+  tooltip: "Take X% less damage"
+  group: "Survival (HP/regen/mitigation)"
+  allowedOn: ["Shield"]
+  values:
+    Uncommon: [2, 3]
+    Magic: [3, 5]
+    Rare: [5, 10]
+    Epic: [10, 13]
+    Legendary: [13, 20]
+
+- id: "turtle shell"
+  name: "Turtle Shell"
+  tooltip: "Take X% less damage from behind"
+  group: "Survival (HP/regen/mitigation)"
+  allowedOn: ["Shoulder"]
+  values:
+    Uncommon: [2, 3]
+    Magic: [3, 5]
+    Rare: [5, 10]
+    Epic: [10, 13]
+    Legendary: [13, 20]
+
+- id: "Apportation"
+  name: "Apportation"
+  tooltip: "Teleport to your thrown weapon when it hits"
+  group: "Weapon handling (speed/stamina/leech)"
+  allowedOn: []
+  allowedSkills: ["Spears"]
+  toggle: true
+  values:
+    Uncommon: [1, 1]
+    Magic: [1, 1]
+    Rare: [1, 1]
+    Epic: [1, 1]
+    Legendary: [1, 1]
+
+- id: "ModifyAttackSpeed"
+  name: "Attack Speed +X%"
+  tooltip: "Attack X% faster"
+  group: "Weapon handling (speed/stamina/leech)"
+  allowedOn: ["OneHanded", "TwoHanded", "Staff"]
+  values:
+    Uncommon: [2, 3]
+    Magic: [3, 6]
+    Rare: [5, 10]
+    Epic: [10, 13]
+    Legendary: [13, 16]
+
+- id: "ModifyAttackStaminaUse"
+  name: "Attack Stamina Use -X%"
+  tooltip: "Attacks cost X% less stamina"
+  group: "Weapon handling (speed/stamina/leech)"
+  allowedOn: ["OneHanded", "TwoHanded", "TwoHandedLeft", "Torch"]
+  values:
+    Uncommon: [2, 3]
+    Magic: [3, 6]
+    Rare: [4, 10]
+    Epic: [6, 12]
+    Legendary: [8, 16]
+
+- id: "LifeAfterKill"
+  name: "Heal X on Kill"
+  tooltip: "Heal X health on kill"
+  group: "Weapon handling (speed/stamina/leech)"
+  allowedOn: ["OneHanded", "TwoHanded", "TwoHandedLeft", "Bow", "Crossbow"]
+  values:
+    Uncommon: [3, 5]
+    Magic: [5, 10]
+    Rare: [10, 13]
+    Epic: [13, 16]
+    Legendary: [16, 20]
+
+- id: "LifeSteal"
+  name: "Lifesteal X%"
+  tooltip: "Heal for X% of damage dealt"
+  group: "Weapon handling (speed/stamina/leech)"
+  allowedOn: ["OneHanded", "TwoHanded", "TwoHandedLeft", "Bow", "Crossbow"]
+  values:
+    Uncommon: [1, 2]
+    Magic: [2, 3]
+    Rare: [3, 4]
+    Epic: [4, 5]
+    Legendary: [4.5, 7]
+
+- id: "RecallWeapon"
+  name: "Recalling"
+  tooltip: "Thrown weapon returns to your hand"
+  group: "Weapon handling (speed/stamina/leech)"
+  allowedOn: ["OneHanded", "TwoHanded"]
+  requiredSkills: ["Axes", "Clubs", "Knives", "Polearms", "Spears", "Swords"]
+  toggle: true
+  values:
+    Uncommon: [1, 1]
+    Magic: [1, 1]
+    Rare: [1, 1]
+    Epic: [1, 1]
+    Legendary: [1, 1]
+
+- id: "ModifyStaggerDuration"
+  name: "Stagger Duration +X%"
+  tooltip: "Staggered enemies stay staggered X% longer"
+  group: "Weapon handling (speed/stamina/leech)"
+  allowedOn: ["OneHanded", "TwoHanded"]
+  allowedSkills: ["Unarmed"]
+  values:
+    Uncommon: [1, 2]
+    Magic: [3, 5]
+    Rare: [5, 10]
+    Epic: [10, 13]
+    Legendary: [13, 16]
+
+- id: "Throwable"
+  name: "Throwable"
+  tooltip: "Secondary attack throws the weapon"
+  group: "Weapon handling (speed/stamina/leech)"
+  allowedOn: ["OneHanded", "TwoHanded"]
+  requiredSkills: ["Axes", "Clubs", "Knives", "Polearms", "Spears", "Swords"]
+  toggle: true
+  values:
+    Uncommon: [1, 1]
+    Magic: [1, 1]
+    Rare: [1, 1]
+    Epic: [1, 1]
+    Legendary: [1, 1]
+
+- id: "AddBlockingSkill"
+  name: "Blocking Skill +X"
+  tooltip: "+X Blocking skill"
+  group: "Weapon skill bonus"
+  allowedOn: []
+  requiredSkills: ["Blocking"]
+  values:
+    Uncommon: [1, 2]
+    Magic: [3, 5]
+    Rare: [5, 10]
+    Epic: [10, 13]
+    Legendary: [13, 20]
+
+- id: "AddBloodMagicSkill"
+  name: "Blood Magic Skill +X"
+  tooltip: "+X Blood Magic skill"
+  group: "Weapon skill bonus"
+  allowedOn: []
+  requiredSkills: ["BloodMagic"]
+  values:
+    Uncommon: [1, 2]
+    Magic: [3, 5]
+    Rare: [5, 10]
+    Epic: [10, 13]
+    Legendary: [13, 20]
+
+- id: "AddBowsSkill"
+  name: "Bows Skill +X"
+  tooltip: "+X Bows skill"
+  group: "Weapon skill bonus"
+  allowedOn: []
+  requiredSkills: ["Bows"]
+  values:
+    Uncommon: [1, 2]
+    Magic: [3, 5]
+    Rare: [5, 10]
+    Epic: [10, 13]
+    Legendary: [13, 20]
+
+- id: "AddClubsSkill"
+  name: "Clubs Skill +X"
+  tooltip: "+X Clubs skill"
+  group: "Weapon skill bonus"
+  allowedOn: []
+  requiredSkills: ["Clubs"]
+  values:
+    Uncommon: [1, 2]
+    Magic: [3, 5]
+    Rare: [5, 10]
+    Epic: [10, 13]
+    Legendary: [13, 20]
+
+- id: "AddCrossbowsSkill"
+  name: "Crossbows Skill +X"
+  tooltip: "+X Crossbows skill"
+  group: "Weapon skill bonus"
+  allowedOn: []
+  requiredSkills: ["Crossbows"]
+  values:
+    Uncommon: [1, 2]
+    Magic: [3, 5]
+    Rare: [5, 10]
+    Epic: [10, 13]
+    Legendary: [13, 20]
+
+- id: "AddElementalMagicSkill"
+  name: "Elemental Magic Skill +X"
+  tooltip: "+X Elemental Magic skill"
+  group: "Weapon skill bonus"
+  allowedOn: []
+  requiredSkills: ["ElementalMagic"]
+  values:
+    Uncommon: [1, 2]
+    Magic: [3, 5]
+    Rare: [5, 10]
+    Epic: [10, 13]
+    Legendary: [13, 20]
+
+- id: "AddKnivesSkill"
+  name: "Knives Skill +X"
+  tooltip: "+X Knives skill"
+  group: "Weapon skill bonus"
+  allowedOn: []
+  requiredSkills: ["Knives"]
+  values:
+    Uncommon: [1, 2]
+    Magic: [3, 5]
+    Rare: [5, 10]
+    Epic: [10, 13]
+    Legendary: [13, 20]
+
+- id: "AddPolearmsSkill"
+  name: "Polearms Skill +X"
+  tooltip: "+X Polearms skill"
+  group: "Weapon skill bonus"
+  allowedOn: []
+  requiredSkills: ["Polearms"]
+  values:
+    Uncommon: [1, 2]
+    Magic: [3, 5]
+    Rare: [5, 10]
+    Epic: [10, 13]
+    Legendary: [13, 20]
+
+- id: "AddSpearsSkill"
+  name: "Spears Skill +X"
+  tooltip: "+X Spears skill"
+  group: "Weapon skill bonus"
+  allowedOn: []
+  requiredSkills: ["Spears"]
+  values:
+    Uncommon: [1, 2]
+    Magic: [3, 5]
+    Rare: [5, 10]
+    Epic: [10, 13]
+    Legendary: [13, 20]
+
+- id: "AddSwordsSkill"
+  name: "Swords Skill +X"
+  tooltip: "+X Swords skill"
+  group: "Weapon skill bonus"
+  allowedOn: ["OneHanded", "TwoHanded"]
+  requiredSkills: ["Swords"]
+  values:
+    Uncommon: [1, 2]
+    Magic: [3, 5]
+    Rare: [5, 10]
+    Epic: [10, 13]
+    Legendary: [13, 20]
+
+- id: "AddUnarmedSkill"
+  name: "Unarmed Skill +X"
+  tooltip: "+X Fists skill"
+  group: "Weapon skill bonus"
+  allowedOn: []
+  requiredSkills: ["Unarmed"]
+  values:
+    Uncommon: [1, 2]
+    Magic: [3, 5]
+    Rare: [5, 10]
+    Epic: [10, 13]
+    Legendary: [13, 20]
+
+- id: "CritChance"
+  name: "Critical Strike Chance +X%"
+  tooltip: "+X% critical strike chance"
+  group: "Physical weapon damage"
+  allowedOn: ["OneHanded", "TwoHanded", "TwoHandedLeft", "Bow", "Crossbow", "Staff", "Torch", "Helmet", "Trinket"]
+  values:
+    Uncommon: [1, 2]
+    Magic: [2, 3]
+    Rare: [3, 5]
+    Epic: [5, 7]
+    Legendary: [7, 10]
+
+- id: "CritDamage"
+  name: "Critical Strike Damage +X%"
+  tooltip: "Critical strikes deal +X% more damage"
+  group: "Physical weapon damage"
+  allowedOn: ["OneHanded", "TwoHanded", "TwoHandedLeft", "Bow", "Crossbow", "Staff", "Torch", "Shoulder", "Trinket"]
+  values:
+    Uncommon: [3, 5]
+    Magic: [5, 10]
+    Rare: [10, 15]
+    Epic: [15, 20]
+    Legendary: [20, 25]

@@ -43,6 +43,41 @@ namespace LegendaryLoot.Powers
 			return zdo != null && zdo.GetBool(KeySummon);
 		}
 
+		/// <summary>An invulnerable summon (Raven's Wing): enemies never target it, so it can't tank for you.</summary>
+		public static bool IsInvulnerable(Character c)
+		{
+			ZDO zdo = c != null && c.m_nview != null ? c.m_nview.GetZDO() : null;
+			return zdo != null && zdo.GetBool(KeySummon) && zdo.GetBool(KeyInvulnerable);
+		}
+
+		private static bool Ignores(Character me, Character other) =>
+			other != null && me != null && !me.IsPlayer() && !me.IsTamed() && IsInvulnerable(other);
+
+		[HarmonyPatch(typeof(BaseAI), nameof(BaseAI.IsEnemy), typeof(Character), typeof(Character))]
+		private static class Patch_IsEnemy
+		{
+			private static void Postfix(Character a, Character b, ref bool __result)
+			{
+				if (__result && Ignores(a, b)) __result = false;
+			}
+		}
+
+		[HarmonyPatch(typeof(MonsterAI), nameof(MonsterAI.SetTarget))]
+		private static class Patch_SetTarget
+		{
+			private static bool Prefix(MonsterAI __instance, Character attacker) => !Ignores(__instance.m_character, attacker);
+		}
+
+		[HarmonyPatch(typeof(MonsterAI), nameof(MonsterAI.UpdateTarget))]
+		private static class Patch_UpdateTarget
+		{
+			private static void Postfix(MonsterAI __instance)
+			{
+				if (__instance.m_targetCreature != null && Ignores(__instance.m_character, __instance.m_targetCreature))
+					__instance.m_targetCreature = null;
+			}
+		}
+
 		/// <summary>
 		/// Summons a creature for the local player. 'max' limits how many of this group can be out at once
 		/// (the oldest goes first).

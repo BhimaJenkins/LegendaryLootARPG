@@ -65,7 +65,7 @@ delves:
 # Bog Witch: bring trophies. count = how many.
 trophies:
   - { title: "Bring me a boar's head", trophy: TrophyBoar, count: 1, biome: Meadows }
-  - { title: "Bring me neck tails", trophy: TrophyNeck, count: 2, biome: Meadows }
+  - { title: "Bring me a neck's head", trophy: TrophyNeck, count: 1, biome: Meadows }
   - { title: "Bring me a greydwarf eye", trophy: TrophyGreydwarf, count: 1, biome: BlackForest }
   - { title: "Bring me a skull", trophy: TrophySkeleton, count: 1, biome: BlackForest }
   - { title: "Bring me a troll's head", trophy: TrophyFrostTroll, count: 1, biome: BlackForest }

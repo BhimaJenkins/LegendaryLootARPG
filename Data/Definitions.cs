@@ -232,6 +232,7 @@ namespace LegendaryLoot.Data
 		public List<string> Tags = new List<string> { "Misc", "Decor" }; // build menu tabs (Piece usage tags)
 		public string IconFile; // a PNG in the mod's textures folder for the build menu icon
 		public string Name = "Stall", Description = "", Blueprint, Icon, Npc, Hat, Voice, Greeting = "";
+		public float VoiceChance = 25f;   // percent chance a voice line plays when they greet or talk
 		public List<string> Talk = new List<string>();
 		public Dictionary<string, int> Requirements = new Dictionary<string, int>();
 		public List<float> NpcPosition = new List<float> { 0, 0, 0 };
@@ -242,6 +243,16 @@ namespace LegendaryLoot.Data
 		public float HatScale = 1f;
 		public float HatLight = 1f; // multiplies the brightness of any light the hat gives off
 		public Dictionary<string, StallSell> Sells = new Dictionary<string, StallSell>();
+		public List<StallItem> Items = new List<StallItem>(); // set items at set prices, once a boss is beaten
+	}
+
+	/// <summary>One set item a stall sells: exact price (not scaled by biome), shown once `boss` has been beaten.</summary>
+	public class StallItem
+	{
+		public string Item;
+		public float Price = 10f;
+		public int Stack = 1;
+		public string Boss;   // creature prefab (Eikthyr, gd_king, Serpent...); empty: always for sale
 	}
 
 	public class ShopDef
@@ -343,6 +354,18 @@ namespace LegendaryLoot.Data
 	}
 
 	/// <summary>enemies.yml: star rolls and enemy affixes.</summary>
+	/// <summary>enemies.yml night: creatures are stronger at night, and drop better gear.</summary>
+	public class NightSettings
+	{
+		public bool Enabled = true;
+		public float Damage = 30f;        // percent more damage dealt by creatures
+		public float Health = 30f;        // percent more health (as less damage taken, so it starts and ends with the night)
+		public float Quality = 50f;       // percent better drops: each tier step 1.5x as likely, star bump and Unique chance x1.5
+		public bool Bosses = false;       // bosses too
+		public string NightText = "Night falls. The creatures of Valheim grow stronger...";
+		public string DawnText = "Dawn breaks. The creatures of Valheim weaken.";
+	}
+
 	public class EnemyFile
 	{
 		public bool Enabled = true;
@@ -364,6 +387,7 @@ namespace LegendaryLoot.Data
 		public UniqueEnemySettings Uniques = new UniqueEnemySettings();
 		public BossSettings Bosses = new BossSettings();
 		public Dictionary<string, Dictionary<string, float>> BossAffixes = new Dictionary<string, Dictionary<string, float>>();
+		public NightSettings Night = new NightSettings();
 
 		[NonSerialized] public HashSet<string> ExcludedSet;
 
@@ -379,6 +403,7 @@ namespace LegendaryLoot.Data
 			Bosses.ExcludedAffixes = Bosses.ExcludedAffixes ?? new Dictionary<string, List<string>>();
 			Bosses.ExcludedEffects = Bosses.ExcludedEffects ?? new List<string>();
 			BossAffixes = BossAffixes ?? new Dictionary<string, Dictionary<string, float>>();
+			Night = Night ?? new NightSettings();
 			ExcludedSet = new HashSet<string>(Excluded ?? new List<string>(), StringComparer.OrdinalIgnoreCase);
 		}
 
@@ -455,8 +480,8 @@ namespace LegendaryLoot.Data
 	{
 		public bool Enabled = true;
 		public float CheckMinutes = 10f;         // how often the server tops up events
-		public float SpawnMin = 150f;            // distance from a player
-		public float SpawnMax = 600f;
+		public float SpawnMin = 105f;            // distance from a player
+		public float SpawnMax = 420f;
 		public int PerPlayer = 2;                // events near each player (within NearRange)
 		public float NearRange = 800f;
 		public int CapPerPlayer = 4;             // server cap: per online player...
@@ -477,12 +502,22 @@ namespace LegendaryLoot.Data
 		public Dictionary<string, EventType> Types = new Dictionary<string, EventType>();
 		public Dictionary<string, BiomeCreatures> Biomes = new Dictionary<string, BiomeCreatures>();
 		public Dictionary<string, string> Bosses = new Dictionary<string, string>(); // Boss event: each biome's boss
+		public HuntedSettings Hunted = new HuntedSettings();
 
 		public void Prepare()
 		{
 			Types = Types ?? new Dictionary<string, EventType>();
 			Biomes = Biomes ?? new Dictionary<string, BiomeCreatures>();
 			Bosses = Bosses ?? new Dictionary<string, string>();
+			Hunted = Hunted ?? new HuntedSettings();
+			Hunted.Predators = Hunted.Predators ?? new Dictionary<string, List<HuntPick>>();
+			Hunted.Packs = Hunted.Packs ?? new Dictionary<string, List<HuntPick>>();
+			Hunted.NoNextZone = Hunted.NoNextZone ?? new List<string>();
+			foreach (var d in new[] { Hunted.Predators, Hunted.Packs })
+				foreach (List<HuntPick> list in d.Values)
+					if (list != null)
+						foreach (HuntPick h in list)
+							if (h != null) { h.Creatures = h.Creatures ?? new List<string>(); h.With = h.With ?? new List<string>(); }
 			foreach (BiomeCreatures b in Biomes.Values)
 			{
 				if (b == null) continue;
@@ -512,6 +547,45 @@ namespace LegendaryLoot.Data
 		public List<ShrineBuff> Buffs = new List<ShrineBuff>(); // Shrine: one is picked per shrine
 		public Dictionary<string, float> ShrineHealth = new Dictionary<string, float>(); // Defend: the shrine's health in each biome
 		public float WaveDistance = 30f;         // Defend: raiders appear this far out
+	}
+
+	/// <summary>events.yml hunted: the hidden "you are being hunted" event.</summary>
+	public class HuntedSettings
+	{
+		public bool Enabled = true;
+		public float Minutes = 6f;               // a roll every 6 minutes (hidden; never shown)...
+		public float Chance = 10f;               // ...with this chance; at a base the roll just passes
+		public float BaseDistance = 40f;         // a base: a campfire, workbench or player building this close
+		public float ApexChance = 50f;           // an Apex Predator instead of a pack (biomes with an apex list)
+		public float NextZoneChance = 25f;       // the predator comes from the next biome up
+		public int StarBonus = 2;                // added to whatever stars the predator rolls (max 5)
+		public float DropMultiplier = 2f;        // the predator's chance to drop gear...
+		public float UniqueMultiplier = 3f;      // ...and its Unique chance
+		public int MinWave = 2, MaxWave = 5;     // a pack: this many of the biome's creatures (events.yml biomes)
+		public float SpawnMin = 25f, SpawnMax = 35f;
+		public float EscapeRange = 150f;         // fails (no chest) when no hunter is this close...
+		public float EscapeSeconds = 60f;        // ...for this long
+		public float TimeoutMinutes = 10f;
+		public string Start = "You are being hunted!";
+		public string ApexStart = "An Apex Predator hunts you!";
+		public string ApexSubtitle = "A strong champion of Valheim come to test your skill.";
+		public string WinText = "You survived the hunt! A reward awaits.";
+		public string ApexWinText = "The Apex Predator has fallen! A reward awaits.";
+		public string EscapeText = "The hunt is over.";
+		public string FailText = "";
+		public Dictionary<string, List<HuntPick>> Predators = new Dictionary<string, List<HuntPick>>(); // each biome's Apex Predators
+		public Dictionary<string, List<HuntPick>> Packs = new Dictionary<string, List<HuntPick>>();     // set packs (else biomes.creatures)
+		public List<string> NoNextZone = new List<string>();  // biomes whose predators never come from the next biome
+	}
+
+	/// <summary>One Hunted choice: which creature(s), how likely, how many, and (optionally) fixed stars.</summary>
+	public class HuntPick
+	{
+		public List<string> Creatures = new List<string>(); // one is picked for each spawn
+		public float Weight = 1f;
+		public int Min = 1, Max = 1;             // how many
+		public int MinStars = -1, MaxStars = -1; // fixed stars (predators: instead of +starBonus); -1: rolled normally
+		public List<string> With = new List<string>(); // creatures that come along (normal)
 	}
 
 	public class ShrineBuff

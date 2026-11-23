@@ -108,6 +108,11 @@ namespace LegendaryLoot.Loot
 							BiomeStep = biomeStep, Stars = stars, Boss = true, Guaranteed = true,
 							UniqueFind = GetUniqueFind(p), Source = $"boss {prefabName} for {p.GetPlayerName()}",
 						};
+						if (Enemies.Night.Active && DataStore.Enemies.Night.Bosses)
+						{
+							bossCtx.Quality = 1f + Mathf.Max(0f, DataStore.Enemies.Night.Quality) / 100f;
+							bossCtx.UniqueMultiplier = bossCtx.Quality;
+						}
 						LootRoller.Result r = LootRoller.Roll(bossCtx);
 						if (r != null) drops.Add(new PendingDrop { Result = r, OwnerId = p.GetPlayerID(), OwnerName = p.GetPlayerName() });
 					}
@@ -131,6 +136,11 @@ namespace LegendaryLoot.Loot
 						BiomeStep = biomeStep, Stars = uStars, Guaranteed = true, UniqueMultiplier = Mathf.Max(1f, u.UniqueChanceMultiplier),
 						UniqueFind = GetUniqueFind(killer), Source = $"unique {prefabName} ({uStars} loot stars)",
 					};
+					if (Enemies.Night.Active)
+					{
+						uctx.Quality = 1f + Mathf.Max(0f, DataStore.Enemies.Night.Quality) / 100f;
+						uctx.UniqueMultiplier *= uctx.Quality;
+					}
 					LootRoller.Result ur = LootRoller.Roll(uctx);
 					if (ur != null) drops.Add(new PendingDrop { Result = ur, OwnerId = killer != null ? killer.GetPlayerID() : 0, OwnerName = killer?.GetPlayerName() });
 				}
@@ -144,6 +154,18 @@ namespace LegendaryLoot.Loot
 				UniqueFind = GetUniqueFind(killer),
 				Source = $"{prefabName} ({stars} stars)",
 			};
+			if (Enemies.Night.Active)   // a night kill: better gear, not more
+			{
+				float q = 1f + Mathf.Max(0f, DataStore.Enemies.Night.Quality) / 100f;
+				ctx.Quality = q;
+				ctx.UniqueMultiplier = (ctx.UniqueMultiplier > 0f ? ctx.UniqueMultiplier : 1f) * q;
+			}
+			if (ar != null && ar.Apex)   // a Hunted event's Apex Predator: better odds, not more items
+			{
+				ctx.DropMultiplier = Mathf.Max(1f, DataStore.Events.Hunted.DropMultiplier);
+				ctx.UniqueMultiplier = Mathf.Max(1f, DataStore.Events.Hunted.UniqueMultiplier) * (ctx.Quality > 1f ? ctx.Quality : 1f);
+				ctx.Source = $"apex {prefabName} ({stars} stars)";
+			}
 			LootRoller.Result result = LootRoller.Roll(ctx);
 			if (result != null)
 				drops.Add(new PendingDrop { Result = result, OwnerId = killer != null ? killer.GetPlayerID() : 0, OwnerName = killer?.GetPlayerName() });

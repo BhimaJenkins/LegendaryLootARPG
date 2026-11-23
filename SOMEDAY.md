@@ -12,6 +12,7 @@ Things noticed during testing that we've decided not to fix right now.
 - **Life Siphon balance.** Works as designed (drain 3 s, hitters heal 5%); may need tuning down later.
 
 # Planned (after the affixes and the rest of the mod)
+- Next: new feasts that give Eitr before the Mistlands, for players with mods that add magic early.
 
 - **Quest list reroll.** A way to reroll a vendor's quest offers, like the shop's reroll. Pushed to someday on
   2026-11-20.

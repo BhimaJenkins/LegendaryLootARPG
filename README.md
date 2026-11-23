@@ -31,7 +31,7 @@ Enemies drop weapons, armor and trinkets with random affixes in six tiers:
 
 ## Vendors, gold and bounties
 
-![Sell your gear: sell your magic gear to any vendor, controller friendly too](https://raw.githubusercontent.com/BhimaJenkins/LegendaryLootARPG/main/assets/sellyourgear.png) ![Try your luck: gamble on mystery gear, or spend your coin on consumables](https://raw.githubusercontent.com/BhimaJenkins/LegendaryLootARPG/main/assets/tryyourluck.png)
+![Sell your gear: sell your magic gear to any vendor, controller friendly too](https://raw.githubusercontent.com/BhimaJenkins/LegendaryLootARPG/main/assets/sellyourgear_card.png) ![Try your luck: gamble on mystery gear, or spend your coin on consumables](https://raw.githubusercontent.com/BhimaJenkins/LegendaryLootARPG/main/assets/tryyourluck_card.png)
 
 - Sell gear to Haldor, Hildir and the Bog Witch for gold. Each sells gear of its own types (from the biomes you've
   reached and recipes you know): daily specials, a once-a-day Mystery item, a reroll, and a Unique gamble.
@@ -52,6 +52,11 @@ Enemies drop weapons, armor and trinkets with random affixes in six tiers:
   numbers on the boss bar.
 - More health for each extra player nearby (config).
 
+## Night
+
+From dusk to dawn the creatures of Valheim grow stronger: 30% more damage and health. Their gear drops are better too:
+higher tiers and Unique items are more likely.
+
 ## World events
 
 Blue circles appear on the map near each player; you find out what each is when you walk in. A countdown on the map
@@ -63,6 +68,9 @@ shows when the next ones appear.
 - **Defend**: keep the Shrine of Protection alive through three waves of raiders.
 - **Boss** (rare): a weaker copy of a boss, with a rich reward chest.
 - Everyone who takes part gets their own reward chest.
+- **Hunted**: away from your base, something may come looking for you: a pack of the biome's creatures, or a lone
+  **Apex Predator** (two stars stronger, with much better odds of a Unique). Kill them all for a reward chest. No map
+  circle, no timer: you won't see it coming.
 
 ## Also
 
@@ -122,6 +130,7 @@ Enemies:
 - `lla-locations [text]`: list this world's location names containing the text, with counts, e.g. `lla-locations crypt`. Handy for the `locations` lists in `quests.yml`.
 - `lla-delve`: inside a dungeon, place a delve chest at the deepest spot and report what was found.
 - `lla-event [Horde|Champion|Ambush|Shrine|Defend|Boss]`: list the world events you know about, or place one 30 m ahead (host or single player).
+- `lla-hunted [apex|normal]`: start a Hunted event on you now.
 
 ## Compatibility
 

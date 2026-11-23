@@ -68,6 +68,18 @@ affixLootStars: 1
 
 # Unique enemies: rare elite versions of normal creatures, with a gold name and a gold glow. Each gets one affix from
 # bossAffixes below plus one normal effect or infusion ("Enraged Quick Draugr"), and drops better loot.
+# Night: from dusk to dawn creatures are stronger and drop better gear (not more of it). Health works as less damage
+# taken, so creatures already out get it at dusk and lose it at dawn. quality 50: each step up a tier is 1.5x as likely,
+# and the star bump and Unique chance are x1.5. Tamed creatures and summons are left alone.
+night:
+  enabled: true
+  damage: 30              # percent more damage dealt by creatures
+  health: 30              # percent more health
+  quality: 50             # percent better drops
+  bosses: false           # bosses too
+  nightText: "Night falls. The creatures of Valheim grow stronger..."
+  dawnText: "Dawn breaks. The creatures of Valheim weaken."
+
 uniques:
   enabled: true
   minMinutes: 20            # overworld: one every 20-40 minutes you spend outside bases and dungeons (per player)...

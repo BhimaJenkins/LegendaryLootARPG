@@ -2,6 +2,23 @@
 
 (Numbering restarted at 0.0.1 after 0.9.9. Older builds are in old-builds.)
 
+## 0.0.58
+- Quest boards: quests you're on hold their slot. A new offer appears only when you turn one in or abandon one (it used to appear the moment you accepted).
+- Bog Witch: "Bring me neck tails" is now "Bring me a neck's head": 1 Neck trophy (they were what she took anyway).
+- Raven's Wing: enemies no longer target the ravens, so they can't tank for you.
+- Boogie and Grillo play a voice line 25% of the time instead of every time (vendors.yml voiceChance).
+- README images readable on dark pages.
+
+## 0.0.57
+- Boogie's Bar sells the Serving Tray (250g) once Eikthyr is beaten, and each feast once its boss is beaten: Meadows 250, Black Forest 300, Swamp 350, Mountain 400, Plains 450, Sailor's Bounty 450 (after a Sea Serpent), Mistlands 500, Ashlands 600, Deep North 700. Set in vendors.yml (stalls: items).
+- Stall prices round halves up (a 22.5g bomb is now 23g).
+- Night: from dusk to dawn creatures deal 30% more damage, have 30% more health and drop better gear (each tier step 1.5x as likely; Unique chance x1.5). A message says when night falls and when dawn breaks. Bosses, tamed creatures and summons are left alone. Settings in enemies.yml (night).
+
+## 0.0.56
+- New event: Hunted. Out in the world (never at a base) something may come for you: a pack of 2-5 of the biome's creatures, or a lone Apex Predator with +2 stars, 2x the chance to drop gear and 3x the Unique chance (sometimes from the next biome). Kill them all for a reward chest. There's no timer on screen. Settings in events.yml (hunted).
+- World events now appear 30% closer: 105-420 m from you (was 150-600 m). If you edited events.yml in your config folder, change spawnMin/spawnMax yourself.
+- Debug: lla-hunted [apex|normal].
+
 ## 0.0.55
 - New beta icon and README wording. No gameplay changes.
 

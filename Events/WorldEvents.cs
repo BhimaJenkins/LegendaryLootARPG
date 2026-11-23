@@ -26,7 +26,7 @@ namespace LegendaryLoot.Events
 	}
 
 	/// <summary>
-	/// World events (events.yml). The server keeps 1-2 events near each player (150-600 m away, in biomes you've reached,
+	/// World events (events.yml). The server keeps 1-2 events near each player (105-420 m away, in biomes you've reached,
 	/// on land), each with a circle on everyone's map. When a player comes within 60 m, their game runs the event: it
 	/// spawns the creatures and, on a win, a personal reward chest for each player who took part. Unfinished events fade
 	/// after 60 minutes; a spot then rests for 45 minutes.
@@ -564,6 +564,7 @@ namespace LegendaryLoot.Events
 			string key = null;
 			foreach (string k in Data.Types.Keys) if (string.Equals(k, type, StringComparison.OrdinalIgnoreCase)) key = k;
 			if (key == null) return $"Unknown event type. Types: {string.Join(", ", Data.Types.Keys)}.";
+			if (key == "Hunted") return Hunted.Debug(null);
 			Vector3 pos = p.transform.position + p.transform.forward * 30f;
 			if (ZoneSystem.instance != null) pos.y = ZoneSystem.instance.GetGroundHeight(pos);
 			string biome = WorldGenerator.instance.GetBiome(pos.x, pos.z).ToString();

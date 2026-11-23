@@ -339,6 +339,11 @@ namespace LegendaryLoot
 				args.Context.AddString(Events.WorldEvents.DebugSpawn(args.Args[1]));
 			}, isCheat: true);
 
+			new Terminal.ConsoleCommand("lla-hunted", "[apex|normal] - Legendary Loot: start a Hunted event on you now", args =>
+			{
+				args.Context.AddString(Events.Hunted.Debug(args.Args.Length > 1 ? args.Args[1] : null));
+			}, isCheat: true);
+
 			new Terminal.ConsoleCommand("lla-kill100", "[biome] [stars] - Legendary Loot: simulate 100 kills and count the drops", args =>
 			{
 				Player p = Player.m_localPlayer;

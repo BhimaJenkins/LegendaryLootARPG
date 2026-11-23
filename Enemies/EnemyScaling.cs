@@ -111,6 +111,10 @@ namespace LegendaryLoot.Enemies
 				float chance = (Data.StarChance + Data.StarChancePerBoss * BossesDefeated()) / 100f;
 				stars = 0;
 				while (stars < cap && Random.value < chance) stars++;
+				int fixedStars = zdo.GetInt(Events.Hunted.KeyStars);
+				if (fixedStars > 0) stars = Mathf.Clamp(fixedStars - 1, 0, 5);   // a Hunted creature with set stars
+				else if (zdo.GetBool(Events.Hunted.KeyApex))   // an Apex Predator: +2 on whatever it rolled
+					stars = Mathf.Clamp(stars + Mathf.Max(0, DataStore.Events.Hunted.StarBonus), 0, Mathf.Max(Data.MaxStars, stars));
 				c.SetLevel(stars + 1);
 			}
 			var affixes = new List<string>();
@@ -178,6 +182,7 @@ namespace LegendaryLoot.Enemies
 			r.Twin = zdo.GetZDOID(KeyTwin) != ZDOID.None || r.Has("Twin");
 			r.TwinCopy = zdo.GetBool(KeyTwinCopy);
 			r.EventBoss = zdo.GetBool(Events.WorldEvents.KeyEventBoss);
+			r.Apex = zdo.GetBool(Events.Hunted.KeyApex);
 			if (r.EventBoss) c.m_defeatSetGlobalKey = "";   // an event's boss doesn't count as defeating the real one
 
 			// Size: from sizeFromStars (3) up, +10% per star: 3 stars 30% bigger, 4 stars 40%, 5 stars 50%.
@@ -319,6 +324,7 @@ namespace LegendaryLoot.Enemies
 			{
 				AffixRuntime r = Of(__instance);
 				if (r == null || __instance.IsPlayer()) return;
+				if (r.Apex && !r.Unique) __result = "<color=#FF5A36>Apex</color> " + __result;
 				if (r.Unique)
 				{
 					string prefix = r.Affixes.Count > 0 ? string.Join(" ", r.Affixes) + " " : "";
@@ -521,6 +527,7 @@ namespace LegendaryLoot.Enemies
 		public bool Boss;
 		public bool TwinCopy;
 		public bool EventBoss;
+		public bool Apex;      // a Hunted event's Apex Predator
 		public float SizeMultiplier = 1f;
 		private int _sizeFrames = 120; // keep the size for the first moments, in case star visuals reset it
 

@@ -99,7 +99,7 @@ rerollCostStep: 10
 stalls:
   BoogiesBar:
     name: "Boogie's Bar"
-    description: "A little bar. Boogie sells meads and dishes you know how to make."
+    description: "A little bar. Boogie sells meads and dishes you know how to make, and feasts from lands you've conquered."
     blueprint: bartender
     tags: [Misc, Decor]
     icon: Tankard              # item whose icon is used until textures/boogiesbar.png exists
@@ -114,10 +114,24 @@ stalls:
     hatScale: 1
     voice: boogie
     greeting: "Welcome to Boogie's Bar! If you know how to brew it or cook it, I'll pour it or plate it."
+    voiceChance: 25        # percent chance a voice line plays when they greet or talk
     talk: ["Thirsty?", "Fresh mead, cold as the mountains!", "Sit, sit! Boogie serves the best."]
     sells:
       meads: { price: 10, stack: 1 }
       dishes: { price: 5, stack: 1 }
+    # Set items at exact gold prices (not scaled by biome), for sale once `boss` (a creature's spawn id) is beaten.
+    # Beaten = its world key is set, or you've picked up its trophy (the Sea Serpent sets no key).
+    items:
+      - { item: Feaster, price: 250, boss: Eikthyr }               # Serving Tray
+      - { item: FeastMeadows, price: 250, boss: Eikthyr }
+      - { item: FeastBlackforest, price: 300, boss: gd_king }
+      - { item: FeastSwamps, price: 350, boss: Bonemass }
+      - { item: FeastMountains, price: 400, boss: Dragon }
+      - { item: FeastPlains, price: 450, boss: GoblinKing }
+      - { item: FeastOceans, price: 450, boss: Serpent }          # Sailor's Bounty
+      - { item: FeastMistlands, price: 500, boss: SeekerQueen }
+      - { item: FeastAshlands, price: 600, boss: Fader }
+      - { item: FeastDeepNorth, price: 700, boss: FrozenKing }    # Kall Fimbulbringer
   GrillosGeneralStore:
     name: "Grillo's General Store"
     description: "A trading post. Grillo sells arrows, bolts, bombs and ballista ammo you know how to make."
@@ -137,6 +151,7 @@ stalls:
     hatLight: 0.5
     voice: grillo
     greeting: "Grillo's General Store! Arrows, bolts, bombs. Whatever you can craft, Grillo can sell."
+    voiceChance: 25        # percent chance a voice line plays when they greet or talk
     talk: ["Need ammo?", "Sharp arrows, cheap!", "Grillo has the best bombs."]
     sells:
       arrows: { price: 10, stack: 20 }

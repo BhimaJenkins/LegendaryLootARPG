@@ -56,6 +56,7 @@ namespace LegendaryLoot.Vendors
 		{
 			StallDef d = Def;
 			if (d == null || string.IsNullOrEmpty(d.Voice)) return;
+			if (Random.value * 100f >= d.VoiceChance) return;
 			List<string> clips = SoundLibrary.FindPrefix(d.Voice);
 			if (clips.Count > 0) SoundLibrary.PlayAt(clips[Random.Range(0, clips.Count)], transform.position + Vector3.up, 1f, 25f, dry: true);
 		}
@@ -152,7 +153,7 @@ namespace LegendaryLoot.Vendors
 			Player p = Player.m_localPlayer;
 			if (def == null || p == null) return list;
 			Build();
-			string key = def.Name + "|" + p.m_knownRecipes.Count + "|" + DataStore.Vendors.GetHashCode();
+			string key = def.Name + "|" + p.m_knownRecipes.Count + "|" + DataStore.Vendors.GetHashCode() + "|" + Unlocks(def, p);
 			if (_cacheKey == key && Cache.TryGetValue(def.Name, out List<Trader.TradeItem> cached)) return cached;
 			foreach (KeyValuePair<string, StallSell> sell in def.Sells)
 			{
@@ -162,7 +163,7 @@ namespace LegendaryLoot.Vendors
 					if (!Known(p, item)) continue;
 					ItemDrop drop = item.GetComponent<ItemDrop>();
 					int step = Mathf.Max(0, BiomeStep(item));
-					int price = Mathf.Max(1, Mathf.RoundToInt(sell.Value.Price * VendorTables.AtStep(DataStore.Vendors.BiomeBuyMultiplier, step)));
+					int price = Mathf.Max(1, Mathf.FloorToInt(sell.Value.Price * VendorTables.AtStep(DataStore.Vendors.BiomeBuyMultiplier, step) + 0.5f));   // halves round up
 					list.Add(new Trader.TradeItem
 					{
 						m_prefab = drop,
@@ -177,9 +178,59 @@ namespace LegendaryLoot.Vendors
 					});
 				}
 			}
+			// Set items (Boogie's tray and feasts): exact prices, once their boss has been beaten.
+			if (def.Items != null)
+				foreach (StallItem it in def.Items)
+				{
+					if (it == null || string.IsNullOrEmpty(it.Item) || !Beaten(it.Boss, p)) continue;
+					GameObject go = ObjectDB.instance.GetItemPrefab(it.Item);
+					ItemDrop drop = go != null ? go.GetComponent<ItemDrop>() : null;
+					if (drop == null) { Plugin.Debug($"Stall {def.Name}: no item called {it.Item}."); continue; }
+					list.Add(new Trader.TradeItem
+					{
+						m_prefab = drop,
+						m_stack = Mathf.Clamp(it.Stack, 1, Mathf.Max(1, drop.m_itemData.m_shared.m_maxStackSize)),
+						m_price = Mathf.Max(1, Mathf.RoundToInt(it.Price)),
+						m_name = "",
+						m_tooltip = "",
+						m_buyKey = "",
+						m_incrementKey = "",
+						m_requiredGlobalKey = "",
+						m_buyPlayerEffects = new EffectList(),
+					});
+				}
 			_cacheKey = key;
 			Cache[def.Name] = list;
 			return list;
+		}
+
+		private static string Unlocks(StallDef def, Player p)
+		{
+			if (def.Items == null || def.Items.Count == 0) return "";
+			var sb = new System.Text.StringBuilder();
+			foreach (StallItem it in def.Items) sb.Append(it != null && Beaten(it.Boss, p) ? '1' : '0');
+			return sb.ToString();
+		}
+
+		/// <summary>The boss's defeat key is set (world or this player), or this player has found its trophy (serpents set no key).</summary>
+		public static bool Beaten(string boss, Player p)
+		{
+			if (string.IsNullOrEmpty(boss)) return true;
+			GameObject prefab = ZNetScene.instance != null ? ZNetScene.instance.GetPrefab(boss) : null;
+			if (prefab == null) return false;
+			Character c = prefab.GetComponent<Character>();
+			string key = c != null ? c.m_defeatSetGlobalKey : null;
+			if (!string.IsNullOrEmpty(key) &&
+			    ((ZoneSystem.instance != null && ZoneSystem.instance.GetGlobalKey(key)) || (p != null && p.HaveUniqueKey(key)))) return true;
+			CharacterDrop cd = prefab.GetComponent<CharacterDrop>();
+			if (cd != null && p != null)
+				foreach (CharacterDrop.Drop d in cd.m_drops)
+				{
+					if (d?.m_prefab == null || !d.m_prefab.name.StartsWith("Trophy", StringComparison.Ordinal)) continue;
+					ItemDrop id = d.m_prefab.GetComponent<ItemDrop>();
+					if (id != null && p.IsMaterialKnown(id.m_itemData.m_shared.m_name)) return true;
+				}
+			return false;
 		}
 
 		private static bool Known(Player p, GameObject item)

@@ -23,6 +23,8 @@ namespace LegendaryLoot.Loot
 			public bool Guaranteed;   // skip the drop-chance roll (bosses, unique enemies, event chests)
 			public float UniqueMultiplier; // unique enemies: x2 Unique chance (and cap); 0 = normal
 			public float UniquePercent;    // a fixed base Unique chance (boss event chests); 0 = normal
+			public float DropMultiplier;   // Apex Predators: x2 drop chance; 0 = normal
+			public float Quality;          // night kills: 1.5 = each tier step 1.5x as likely, star bump x1.5; 0 = normal
 			public string Source;     // for logs
 		}
 
@@ -39,6 +41,7 @@ namespace LegendaryLoot.Loot
 			float chance = t.DropChanceBase + t.DropChancePerBiomeStep * ctx.BiomeStep + t.DropChancePerStar * ctx.Stars;
 			chance *= Plugin.DropMultiplier.Value;
 			if (ctx.Swarm) chance *= t.SwarmDropMultiplier;
+			if (ctx.DropMultiplier > 0f) chance *= ctx.DropMultiplier;
 			return Mathf.Clamp01(chance);
 		}
 
@@ -92,7 +95,7 @@ namespace LegendaryLoot.Loot
 			}
 			else
 			{
-				tier = unique ? Tier.Legendary : RollTier(ctx.BiomeStep);
+				tier = unique ? Tier.Legendary : RollTier(ctx.BiomeStep, ctx.Quality);
 				if (!unique)
 				{
 					if (ctx.Boss)
@@ -102,6 +105,7 @@ namespace LegendaryLoot.Loot
 					else
 					{
 						float bump = Mathf.Min(t.StarBumpPerStar * ctx.Stars, t.StarBumpMax);
+						if (ctx.Quality > 1f) bump = Mathf.Min(1f, bump * ctx.Quality);
 						if (Random.value < bump) tier = Tiers.Bump(tier);
 					}
 				}
@@ -168,18 +172,19 @@ namespace LegendaryLoot.Loot
 		}
 
 		/// <summary>Tier from the biome's odds table (Uncommon, Magic, Rare, Epic, Legendary).</summary>
-		public static Tier RollTier(int biomeStep)
+		public static Tier RollTier(int biomeStep, float quality = 0f)
 		{
+			float q = quality > 1f ? quality : 1f;   // each tier step up is q times as likely
 			LootTables t = DataStore.Loot;
 			string biome = t.BiomeAt(biomeStep);
 			if (t.TierOdds == null || !t.TierOdds.TryGetValue(biome, out List<float> odds) || odds == null || odds.Count == 0)
 				return Tier.Uncommon;
 			float total = 0f;
-			foreach (float o in odds) total += Mathf.Max(0f, o);
+			for (int i = 0; i < odds.Count && i < 5; i++) total += Mathf.Max(0f, odds[i]) * Mathf.Pow(q, i);
 			float r = Random.value * total;
 			for (int i = 0; i < odds.Count && i < 5; i++)
 			{
-				r -= Mathf.Max(0f, odds[i]);
+				r -= Mathf.Max(0f, odds[i]) * Mathf.Pow(q, i);
 				if (r <= 0f) return (Tier)(i + 1);
 			}
 			return (Tier)Mathf.Min(odds.Count, 5);

@@ -247,10 +247,12 @@ namespace LegendaryLoot.Vendors
 			}
 			HashSet<string> taken = TakenToday();
 			var list = new List<Offer>();
+			// Quests you're on hold their slot: a new offer shows only once one is turned in or abandoned.
+			int slots = qf.OffersPerVendor - Active.FindAll(q => q.Vendor == vendor).Count;
 			int picked = 0;
 			foreach (Offer o in all)
 			{
-				if (picked >= qf.OffersPerVendor) break;
+				if (picked >= slots) break;
 				if (taken.Contains(vendor + ":" + o.Title)) continue;
 				if (Active.Exists(q => q.Vendor == vendor && q.Title == o.Title)) continue;
 				picked++;

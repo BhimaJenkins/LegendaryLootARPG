@@ -12,7 +12,7 @@ namespace LegendaryLoot
 	{
 		public const string ModGuid = "BhimaJenkins.LegendaryLootARPG";
 		public const string ModName = "Legendary Loot and ARPG";
-		public const string ModVersion = "0.0.55";
+		public const string ModVersion = "0.0.58";
 
 		public static Plugin Instance;
 		public static ManualLogSource Log;

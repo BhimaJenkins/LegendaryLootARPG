@@ -4,8 +4,8 @@
 
 enabled: true
 checkMinutes: 10          # how often the server tops up events
-spawnMin: 150             # events appear 150-600 m from a player
-spawnMax: 600
+spawnMin: 105             # events appear 105-420 m from a player
+spawnMax: 420
 perPlayer: 2              # events near each player (within nearRange)
 nearRange: 800
 capPerPlayer: 4           # server cap: 4 per online player...
@@ -79,6 +79,10 @@ types:                    # weight: how often each appears (2 + 2 + 2 + 2 + 1 + 
     gearRolls: 3          # its reward chest: 3 boss-quality gear rolls...
     uniquePercent: 20     # ...each with a 20% base chance of a Unique
     bossLoot: true
+  Hunted:                 # never placed on the map (weight 0): the reward chest for the Hunted event below
+    weight: 0
+    name: Hunted
+    gearRolls: 2
 
 # The creatures each biome's events use. Champions become unique enemies (gold, boss affix, better loot).
 biomes:
@@ -89,6 +93,60 @@ biomes:
   Plains:      { creatures: [Goblin, GoblinArcher, GoblinShaman, Deathsquito], champions: [GoblinBrute, Lox] }
   Mistlands:   { creatures: [Seeker, SeekerBrute, Tick], champions: [SeekerBrute, Gjall] }
   AshLands:    { creatures: [Charred_Melee, Charred_Archer, Charred_Mage, BlobLava], champions: [Morgen] }
+
+# Hunted: like vanilla's "You are being hunted", but one wave and done. Your own game keeps a hidden clock (nothing on
+# screen shows it): every `minutes` there's a `chance` that something comes for you. At a base (a campfire, workbench
+# or player building within baseDistance), indoors, at sea or asleep the roll just passes.
+# Half the time it's a pack of 2-5 of the biome's creatures (biomes above); half the time one Apex Predator from the
+# biome's apex list (25% of the time from the next biome's list) with +2 stars on whatever it rolls, 2x the chance to
+# drop gear and 3x the Unique chance. Kill them all for a reward chest (the Hunted type above).
+hunted:
+  enabled: true
+  minutes: 6
+  chance: 10
+  baseDistance: 40
+  apexChance: 50
+  nextZoneChance: 25
+  starBonus: 2
+  dropMultiplier: 2
+  uniqueMultiplier: 3
+  minWave: 2
+  maxWave: 5
+  spawnMin: 25            # hunters appear 25-35 m away
+  spawnMax: 35
+  escapeRange: 150        # the hunt ends (no chest) when no hunter is within 150 m for 60 seconds, or after 10 minutes
+  escapeSeconds: 60
+  timeoutMinutes: 10
+  start: "You are being hunted!"
+  apexStart: "An Apex Predator hunts you!"
+  apexSubtitle: "A strong champion of Valheim come to test your skill."
+  winText: "You survived the hunt! A reward awaits."
+  apexWinText: "The Apex Predator has fallen! A reward awaits."
+  escapeText: "The hunt is over."
+  noNextZone: [Meadows]   # Meadows predators never come from the Black Forest
+  predators:              # each biome's Apex Predators. weight: how likely; minStars/maxStars: set stars instead of +2;
+    Meadows:              # with: creatures that come along
+      - { creatures: [Boar], weight: 75, minStars: 2, maxStars: 4 }
+      - { creatures: [Troll], weight: 25, minStars: 0, maxStars: 1 }
+    BlackForest:
+      - { creatures: [Troll] }
+      - { creatures: [Bjorn] }
+    Swamp:
+      - { creatures: [Abomination] }
+    Mountain:
+      - { creatures: [StoneGolem] }
+    Plains:
+      - { creatures: [GoblinBrute], with: [GoblinShaman] }
+    Mistlands:
+      - { creatures: [Gjall] }
+      - { creatures: [SeekerBrute] }
+    AshLands:
+      - { creatures: [Morgen] }
+      - { creatures: [FallenValkyrie] }
+  packs:                  # set packs for a biome (otherwise minWave-maxWave of the biome's creatures). Biomes with
+    DeepNorth:            # packs but no predators always get a pack.
+      - { creatures: [Barka], min: 2, max: 3 }
+      - { creatures: [JotunWarrior, JotunWarriorDualWield], min: 3, max: 5 }   # Krigen
 
 # The Boss event's boss for each biome. Its kill doesn't count as defeating the real boss.
 bosses:

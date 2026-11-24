@@ -515,6 +515,7 @@ namespace LegendaryLoot.Events
 				inv.AddItem(c);
 			}
 			LightShaft.Mark(chest, Tier.Legendary);
+			ChestPings.Announce(playerId, at);   // a pulsing ping on that player's map until it's emptied
 		}
 
 		/// <summary>Reward chests open only for the player they're for, and disappear once emptied.</summary>

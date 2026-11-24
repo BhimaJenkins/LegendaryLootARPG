@@ -67,7 +67,7 @@ shows when the next ones appear.
 - **Shrine**: touch it for 5 minutes of Fury, Swiftness or Fortune.
 - **Defend**: keep the Shrine of Protection alive through three waves of raiders.
 - **Boss** (rare): a weaker copy of a boss, with a rich reward chest.
-- Everyone who takes part gets their own reward chest.
+- Everyone who takes part gets their own reward chest, marked with a pulsing ping on their map until it's emptied.
 - **Hunted**: away from your base, something may come looking for you: a pack of the biome's creatures, or a lone
   **Apex Predator** (two stars stronger, with much better odds of a Unique). Kill them all for a reward chest. No map
   circle, no timer: you won't see it coming.
@@ -131,6 +131,7 @@ Enemies:
 - `lla-delve`: inside a dungeon, place a delve chest at the deepest spot and report what was found.
 - `lla-event [Horde|Champion|Ambush|Shrine|Defend|Boss]`: list the world events you know about, or place one 30 m ahead (host or single player).
 - `lla-hunted [apex|normal]`: start a Hunted event on you now.
+- `lla-chestpings [clear]`: list (or clear) your reward chest map pings.
 
 ## Compatibility
 

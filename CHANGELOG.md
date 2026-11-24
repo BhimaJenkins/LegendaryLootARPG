@@ -2,6 +2,9 @@
 
 (Numbering restarted at 0.0.1 after 0.9.9. Older builds are in old-builds.)
 
+## 0.0.59
+- Event reward chests: a pulsing ping on your map (and minimap) marks each of your reward chests until you empty it. Kept through a relog. lla-chestpings [clear] lists or clears them.
+
 ## 0.0.58
 - Quest boards: quests you're on hold their slot. A new offer appears only when you turn one in or abandon one (it used to appear the moment you accepted).
 - Bog Witch: "Bring me neck tails" is now "Bring me a neck's head": 1 Neck trophy (they were what she took anyway).

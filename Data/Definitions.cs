@@ -104,6 +104,7 @@ namespace LegendaryLoot.Data
 		public Dictionary<string, string> MaterialBiomes = new Dictionary<string, string>();
 		public float UniqueChanceScale = 0.5f; // every Unique chance is multiplied by this (then by the config's Unique drop rate)
 		public Dictionary<string, string> StationBiomes = new Dictionary<string, string>(); // an item is at least its crafting station's biome
+		public Dictionary<string, float> FeastEitr = new Dictionary<string, float>();       // Eitr for feasts (spawn id -> Eitr)
 		// Hand-set item biomes (prefab name), for items the material rule gets wrong.
 		public Dictionary<string, string> ItemBiomes = new Dictionary<string, string>();
 
@@ -114,6 +115,7 @@ namespace LegendaryLoot.Data
 		public void Prepare()
 		{
 			_magicSkills = new HashSet<string>(MagicSkills ?? new List<string>(), StringComparer.OrdinalIgnoreCase);
+			FeastEitr = FeastEitr ?? new Dictionary<string, float>();
 			_excludedSkills = new HashSet<string>(ExcludedSkills ?? new List<string>(), StringComparer.OrdinalIgnoreCase);
 			_swarm = new HashSet<string>(SwarmCreatures ?? new List<string>(), StringComparer.OrdinalIgnoreCase);
 			ExcludedCategories = ExcludedCategories ?? new List<string>();

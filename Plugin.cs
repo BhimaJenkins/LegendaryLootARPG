@@ -12,7 +12,7 @@ namespace LegendaryLoot
 	{
 		public const string ModGuid = "BhimaJenkins.LegendaryLootARPG";
 		public const string ModName = "Legendary Loot and ARPG";
-		public const string ModVersion = "0.0.59";
+		public const string ModVersion = "0.0.60";
 
 		public static Plugin Instance;
 		public static ManualLogSource Log;
@@ -34,6 +34,7 @@ namespace LegendaryLoot
 		public static ConfigEntry<float> DropMultiplier;
 		public static ConfigEntry<UniqueChancePreset> UniqueChance;
 		public static ConfigEntry<float> UniqueDropRate;
+		public static ConfigEntry<bool> NextBiomeDrops;
 		public static ConfigEntry<float> WeaponShare;
 		public static ConfigEntry<float> PersonalLootMinutes;
 		public static ConfigEntry<float> BossLootRange;
@@ -76,6 +77,8 @@ namespace LegendaryLoot
 			UniqueDropRate = config("2 - Loot", "Unique drop rate", 1f,
 				new ConfigDescription("Multiplies every Unique chance, 1x to 5x (after loot.yml's uniqueChanceScale, which halves them by default).",
 					new AcceptableValueRange<float>(1f, 5f)));
+			NextBiomeDrops = config("2 - Loot", "Drops from the next biome", false,
+				"Off: gear drops only come from the biome you're in. On: a small chance (loot.yml nextBiomeChance, 3%) that a drop comes from the next biome up.");
 			WeaponShare = config("2 - Loot", "Weapon share", 0.5f,
 				new ConfigDescription("Share of drops that are weapons. The rest are armor and trinkets.", new AcceptableValueRange<float>(0f, 1f)));
 			PersonalLootMinutes = config("2 - Loot", "Personal loot minutes", 5f,

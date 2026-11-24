@@ -57,9 +57,9 @@ namespace LegendaryLoot.Loot
 				if (Random.value >= chance) return null;
 			}
 
-			// 2. Item biome: mostly the mob's biome, small chance of the next one up. Tier odds stay the mob's.
+			// 2. Item biome: the mob's biome. With "Drops from the next biome" on, a small chance of the next one up.
 			int itemStep = ctx.BiomeStep;
-			if (Random.value < t.NextBiomeChance && itemStep < t.BiomeOrder.Count - 1) itemStep++;
+			if (Plugin.NextBiomeDrops.Value && Random.value < t.NextBiomeChance && itemStep < t.BiomeOrder.Count - 1) itemStep++;
 
 			// 3. Weapon or armor/trinket
 			bool weapon = Random.value < Plugin.WeaponShare.Value;

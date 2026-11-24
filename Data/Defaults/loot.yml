@@ -16,7 +16,8 @@ dropChancePerStar: 0.03
 swarmDropMultiplier: 0.5
 swarmCreatures: [Tick, Bat, Deathsquito]
 
-# 2. Chance the item comes from the next biome up (it still uses the mob's tier odds).
+# 2. Chance the item comes from the next biome up (it still uses the mob's tier odds). Only when the config setting
+#    "Drops from the next biome" is on; off by default, so drops stay in their biome.
 nextBiomeChance: 0.03
 
 # 4. Unique chance in percent: biome base + per star + Unique Find, capped (bosses are uncapped).
@@ -400,3 +401,13 @@ itemBiomes:
   ShieldRoots: DeepNorth
   TrinketBloodGoldHealth: DeepNorth  # Neckstabber
   TrinketBloodGoldStamina: DeepNorth # Witch Crown
+
+# Eitr for the feasts that have none, for players whose other gear mods bring magic before the Mistlands.
+# Spawn id -> Eitr. Remove a line to put that feast back the way it was.
+feastEitr:
+  FeastMeadows: 10        # Whole Roasted Meadow Boar
+  FeastBlackforest: 13    # Black Forest Buffet Platter
+  FeastSwamps: 15         # Swamp Dweller's Delight
+  FeastMountains: 18      # Hearty Mountain Logger's Stew
+  FeastOceans: 20         # Sailor's Bounty
+  FeastPlains: 20         # Plains Pie Picnic

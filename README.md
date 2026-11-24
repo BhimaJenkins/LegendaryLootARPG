@@ -85,11 +85,12 @@ Install with r2modman or Thunderstore Mod Manager, or copy `LegendaryLootARPG.dl
 
 ## Configuration
 
-- `BepInEx/config/BhimaJenkins.LegendaryLootARPG.cfg`: drop chance, Unique chance, weapon/armor split, personal loot,
-  light shafts, visuals, quests reset, enemy multiplayer health and more.
+- `BepInEx/config/BhimaJenkins.LegendaryLootARPG.cfg`: drop chance, Unique chance, drops from the next biome (off by
+  default: gear stays in its biome), weapon/armor split, personal loot, light shafts, visuals, quests reset, enemy
+  multiplayer health and more.
 - `BepInEx/config/LegendaryLootARPG/`: the data files. Edit one on the server and it reloads straight away for everyone.
   - `affixes.yml`, `uniques.yml`, `powers.yml`: every affix and Unique, where they roll and their values.
-  - `loot.yml`: drop chances, tier odds by biome, creature and material biomes.
+  - `loot.yml`: drop chances, tier odds by biome, creature and material biomes, and Eitr for the early feasts.
   - `vendors.yml`: prices, what each vendor sells, and the stalls.
   - `quests.yml`: bounties, delves and trophy quests.
   - `enemies.yml`: stars, enemy affixes, unique enemies and bosses.
@@ -99,6 +100,9 @@ A data file you haven't edited updates itself when the mod updates; one you've e
 sections in from the defaults yourself.
 
 ### Modded weapons and magic schools
+
+The early feasts (Meadows through Plains, and Sailor's Bounty) give some Eitr, so magic gear from other mods is usable
+before the Mistlands. Change or remove them under `feastEitr` in `loot.yml`.
 
 Items from other mods (Therzie's, WoW Weapons and so on) join the drop pool automatically. The mod sorts them by item type and skill, and places them in a biome by their recipe materials. If a mod adds a new magic school, add its skill name to `magicSkills` in `loot.yml` so its weapons count as staffs. If an item lands in the wrong biome, set it under `itemBiomes`.
 

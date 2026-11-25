@@ -14,7 +14,8 @@ namespace LegendaryLoot.Enemies
 	///  - Nests and other spawner structures (SpawnArea): their near/total limits are multiplied the same way.
 	///  - Camp and dungeon spawn points (CreatureSpawner): each spawn brings extra copies (1.5x: 50% chance of one more),
 	///    topped up only to the count, so they never pile up.
-	/// Bosses are never multiplied, and neither are the mod's own events (their counts are in events.yml).
+	/// Bosses are never multiplied. Of the mod's own events only Horde waves and Hunted packs are (not Defend, Ambush,
+	/// Champion, Apex Predators or Boss).
 	/// </summary>
 	public static class EnemyCount
 	{
@@ -24,6 +25,15 @@ namespace LegendaryLoot.Enemies
 		private static bool On => Multiplier > 1.001f;
 
 		private static int Scale(int n) => Mathf.Max(n, Mathf.RoundToInt(n * Multiplier));
+
+		/// <summary>For the Horde and Hunted events: n creatures times the setting, a fraction rolled (5 at 1.5x = 7 or 8).</summary>
+		public static int Multiply(int n)
+		{
+			if (!On || n <= 0) return n;
+			float v = n * Multiplier;
+			int whole = Mathf.FloorToInt(v);
+			return whole + (Random.value < v - whole ? 1 : 0);
+		}
 
 		/// <summary>1.5x of 1 = 1 or 2 (50/50); 2x = 2; 2.5x = 2 or 3.</summary>
 		private static int RollCount()

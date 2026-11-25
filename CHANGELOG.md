@@ -3,7 +3,8 @@
 (Numbering restarted at 0.0.1 after 0.9.9. Older builds are in old-builds.)
 
 ## 0.0.60
-- New setting "5 - Enemies / Enemy count" (1x to 3x): more creatures from overworld spawns, raids, nests, camps and dungeons. Bosses and this mod's events are never multiplied.
+- New setting "5 - Enemies / Enemy count" (1x to 3x): more creatures from overworld spawns, raids, nests, camps and dungeons, and in Horde waves and Hunted packs. Bosses, Apex Predators and the other events (Defend, Ambush, Champion, Boss) are never multiplied.
+- A new reward chest's map ping pops once a second for 5 seconds, so it's hard to miss.
 
 ## 0.0.59
 - Gear drops stay in their biome. New setting "2 - Loot / Drops from the next biome" (off by default) brings back the small chance (loot.yml nextBiomeChance, 3%) of a drop from the next biome up.

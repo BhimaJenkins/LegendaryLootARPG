@@ -125,7 +125,7 @@ namespace LegendaryLoot
 				"Show the boss's health as numbers (current / max) on the boss health bar.", synced: false);
 
 			EnemyCount = config("5 - Enemies", "Enemy count", 1f,
-				new ConfigDescription("Multiplies how many creatures spawn, 1x (normal) to 3x: overworld spawns, raids, nests, camps and dungeons. Bosses and this mod's events are never multiplied.",
+				new ConfigDescription("Multiplies how many creatures spawn, 1x (normal) to 3x: overworld spawns, raids, nests, camps, dungeons, Horde waves and Hunted packs. Bosses, Apex Predators and the other events are never multiplied.",
 					new AcceptableValueRange<float>(1f, 3f)));
 			HealthPerExtraPlayer = config("5 - Enemies", "Health per extra player", 30f,
 				new ConfigDescription("Percent more health creatures get for each additional player near them (bosses and unique enemies " +

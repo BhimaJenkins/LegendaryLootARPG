@@ -128,6 +128,7 @@ namespace LegendaryLoot.Events
 		{
 			_wave++;
 			int count = (_type.Waves.Count > 0 ? _type.Waves[Mathf.Clamp(_wave, 0, _type.Waves.Count - 1)] : 4) + Extra();
+			if (_ev.Type == "Horde") count = Enemies.EnemyCount.Multiply(count);   // the Enemy count setting
 			bool ambush = _ev.Type == "Ambush", defend = _ev.Type == "Defend";
 			StaticTarget ward = null;
 			if (defend)

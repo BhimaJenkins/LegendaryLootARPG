@@ -151,7 +151,7 @@ namespace LegendaryLoot.Events
 				HuntPick pack = Pick(PicksFor(S.Packs, biome));
 				if (pack != null && pack.Creatures.Count > 0)
 				{
-					int count = Random.Range(Mathf.Max(1, pack.Min), Mathf.Max(pack.Min, pack.Max) + 1);
+					int count = EnemyCount.Multiply(Random.Range(Mathf.Max(1, pack.Min), Mathf.Max(pack.Min, pack.Max) + 1));
 					for (int i = 0; i < count; i++)
 					{
 						int stars = pack.MinStars >= 0 ? Random.Range(pack.MinStars, Mathf.Max(pack.MinStars, pack.MaxStars) + 1) : -1;
@@ -162,7 +162,7 @@ namespace LegendaryLoot.Events
 				{
 					BiomeCreatures bc = Creatures(biome);
 					if (bc == null || bc.Creatures.Count == 0) return $"No creatures listed for the {biome}.";
-					int count = Random.Range(Mathf.Max(1, S.MinWave), Mathf.Max(S.MinWave, S.MaxWave) + 1);
+					int count = EnemyCount.Multiply(Random.Range(Mathf.Max(1, S.MinWave), Mathf.Max(S.MinWave, S.MaxWave) + 1));
 					for (int i = 0; i < count; i++) run.Spawn(bc.Creatures[Random.Range(0, bc.Creatures.Count)], pos, false);
 				}
 				if (run.Count == 0) return "Nothing could be spawned.";

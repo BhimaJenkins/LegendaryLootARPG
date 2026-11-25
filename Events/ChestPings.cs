@@ -23,6 +23,8 @@ namespace LegendaryLoot.Events
 		private static readonly Dictionary<int, Minimap.PinData> Pins = new Dictionary<int, Minimap.PinData>();
 		private static readonly HashSet<Container> Live = new HashSet<Container>();   // loaded reward chests
 		private static Player _loadedFor;
+		private static readonly Dictionary<int, float> Pulse = new Dictionary<int, float>();   // ping key -> when its pulses began
+		private const float PulseSeconds = 5f;
 		private static GameObject _driver;
 
 		[HarmonyPatch(typeof(Game), nameof(Game.Start))]
@@ -33,6 +35,7 @@ namespace LegendaryLoot.Events
 				ZRoutedRpc.instance.Register<long, Vector3>(Rpc, OnPing);
 				Pings.Clear();
 				Pins.Clear();
+				Pulse.Clear();
 				Live.Clear();
 				_loadedFor = null;
 				if (_driver != null) return;
@@ -56,6 +59,8 @@ namespace LegendaryLoot.Events
 			Load(p);
 			Add(pos);
 			Save(p);
+			Pulse[Key(pos)] = Time.time;   // pops once a second for 5 seconds, so it's hard to miss
+			try { Tick(); } catch (Exception ex) { Plugin.Log.LogWarning($"Chest pings: {ex.Message}"); }   // the pin now, not in a second
 		}
 
 		private static void Add(Vector3 pos)
@@ -91,6 +96,7 @@ namespace LegendaryLoot.Events
 
 			private void Update()
 			{
+				UpdatePulses();
 				if (Time.time < _next) return;
 				_next = Time.time + 1f;
 				try { Tick(); }
@@ -135,6 +141,21 @@ namespace LegendaryLoot.Events
 				if (want.Contains(key)) continue;
 				if (Pins[key] != null) map.RemovePin(Pins[key]);
 				Pins.Remove(key);
+			}
+		}
+
+		/// <summary>A new chest's pin pops to double size for half of each second, five times, then settles.</summary>
+		private static void UpdatePulses()
+		{
+			if (Pulse.Count == 0) return;
+			foreach (int key in new List<int>(Pulse.Keys))
+			{
+				float t = Time.time - Pulse[key];
+				bool done = t >= PulseSeconds;
+				if (Pins.TryGetValue(key, out Minimap.PinData pin) && pin != null)
+					pin.m_doubleSize = !done && (t % 1f) < 0.5f;
+				else if (t > PulseSeconds + 2f) done = true;   // its pin never showed
+				if (done) Pulse.Remove(key);
 			}
 		}
 

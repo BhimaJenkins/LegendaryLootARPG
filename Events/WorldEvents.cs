@@ -26,7 +26,7 @@ namespace LegendaryLoot.Events
 	}
 
 	/// <summary>
-	/// World events (events.yml). The server keeps 1-2 events near each player (105-420 m away, in biomes you've reached,
+	/// World events (events.yml). The server keeps 1-2 events near each player (60-120 m away, in biomes you've reached,
 	/// on land), each with a circle on everyone's map. When a player comes within 60 m, their game runs the event: it
 	/// spawns the creatures and, on a win, a personal reward chest for each player who took part. Unfinished events fade
 	/// after 60 minutes; a spot then rests for 45 minutes.

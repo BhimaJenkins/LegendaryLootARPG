@@ -482,8 +482,8 @@ namespace LegendaryLoot.Data
 	{
 		public bool Enabled = true;
 		public float CheckMinutes = 10f;         // how often the server tops up events
-		public float SpawnMin = 105f;            // distance from a player
-		public float SpawnMax = 420f;
+		public float SpawnMin = 60f;             // distance from a player
+		public float SpawnMax = 120f;
 		public int PerPlayer = 2;                // events near each player (within NearRange)
 		public float NearRange = 800f;
 		public int CapPerPlayer = 4;             // server cap: per online player...

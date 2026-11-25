@@ -1,6 +1,6 @@
 {
   "name": "LegendaryLootARPG",
-  "version_number": "0.0.61",
+  "version_number": "0.0.60",
   "website_url": "https://github.com/BhimaJenkins/LegendaryLootARPG",
   "description": "Diablo-style ARPG for Valheim: affix loot in six tiers with Uniques, vendors with gold, bounties and delves, enemy stars and affixes, unique enemies, and world events. Controller friendly. Required on server and clients.",
   "dependencies": [

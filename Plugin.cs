@@ -12,7 +12,7 @@ namespace LegendaryLoot
 	{
 		public const string ModGuid = "BhimaJenkins.LegendaryLootARPG";
 		public const string ModName = "Legendary Loot and ARPG";
-		public const string ModVersion = "0.0.59";
+		public const string ModVersion = "0.0.60";
 
 		public static Plugin Instance;
 		public static ManualLogSource Log;
@@ -35,6 +35,7 @@ namespace LegendaryLoot
 		public static ConfigEntry<UniqueChancePreset> UniqueChance;
 		public static ConfigEntry<float> UniqueDropRate;
 		public static ConfigEntry<bool> NextBiomeDrops;
+		public static ConfigEntry<float> EnemyCount;
 		public static ConfigEntry<float> WeaponShare;
 		public static ConfigEntry<float> PersonalLootMinutes;
 		public static ConfigEntry<float> BossLootRange;
@@ -123,6 +124,9 @@ namespace LegendaryLoot
 			BossHealthNumbers = config("3 - Visuals", "Boss health numbers", true,
 				"Show the boss's health as numbers (current / max) on the boss health bar.", synced: false);
 
+			EnemyCount = config("5 - Enemies", "Enemy count", 1f,
+				new ConfigDescription("Multiplies how many creatures spawn, 1x (normal) to 3x: overworld spawns, raids, nests, camps and dungeons. Bosses and this mod's events are never multiplied.",
+					new AcceptableValueRange<float>(1f, 3f)));
 			HealthPerExtraPlayer = config("5 - Enemies", "Health per extra player", 30f,
 				new ConfigDescription("Percent more health creatures get for each additional player near them (bosses and unique enemies " +
 				                      "included). 2 players: +30%, 3 players: +60%. 0 = off.", new AcceptableValueRange<float>(0f, 200f)));

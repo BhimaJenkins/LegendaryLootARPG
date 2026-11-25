@@ -87,7 +87,7 @@ Install with r2modman or Thunderstore Mod Manager, or copy `LegendaryLootARPG.dl
 
 - `BepInEx/config/BhimaJenkins.LegendaryLootARPG.cfg`: drop chance, Unique chance, drops from the next biome (off by
   default: gear stays in its biome), weapon/armor split, personal loot, light shafts, visuals, quests reset, enemy
-  multiplayer health and more.
+  count (1x-3x), enemy multiplayer health and more.
 - `BepInEx/config/LegendaryLootARPG/`: the data files. Edit one on the server and it reloads straight away for everyone.
   - `affixes.yml`, `uniques.yml`, `powers.yml`: every affix and Unique, where they roll and their values.
   - `loot.yml`: drop chances, tier odds by biome, creature and material biomes, and Eitr for the early feasts.

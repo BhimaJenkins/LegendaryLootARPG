@@ -2,6 +2,9 @@
 
 (Numbering restarted at 0.0.1 after 0.9.9. Older builds are in old-builds.)
 
+## 0.0.61
+- Crafting search on controller: R3 now also repairs (Valheim's own R3 action) when it opens the mod's on-screen keyboard, as it already did with Steam's keyboard.
+
 ## 0.0.60
 - New setting "5 - Enemies / Enemy count" (1x to 3x): more creatures from overworld spawns, raids, nests, camps and dungeons, and in Horde waves and Hunted packs. Bosses, Apex Predators and the other events (Defend, Ambush, Champion, Boss) are never multiplied.
 - A new reward chest's map ping pops once a second for 5 seconds, so it's hard to miss.

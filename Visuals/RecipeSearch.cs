@@ -85,9 +85,27 @@ namespace LegendaryLoot
 						_field.Select();
 						_field.ActivateInputField();
 					}
-					else OnScreenKeyboard.Open(_field);
+					else
+					{
+						// R3 is also Valheim's repair button. Steam's keyboard lets that through; ours blocks controller
+						// buttons while it opens, so press repair here first: R3 repairs and opens the search, like on SteamOS.
+						PressRepair();
+						OnScreenKeyboard.Open(_field);
+					}
 				}
 			}
+		}
+
+		/// <summary>Valheim's repair, when its button is showing and has something to repair.</summary>
+		private static void PressRepair()
+		{
+			try
+			{
+				InventoryGui gui = InventoryGui.instance;
+				UnityEngine.UI.Button b = gui != null ? gui.m_repairButton : null;
+				if (b != null && b.gameObject.activeInHierarchy && b.interactable) gui.OnRepairPressed();
+			}
+			catch (System.Exception ex) { Plugin.Log.LogWarning($"Recipe search: repair: {ex.Message}"); }
 		}
 
 		/// <summary>While the box has focus, the game treats it like the chat box: keys type instead of acting.</summary>
